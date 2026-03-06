@@ -163,17 +163,13 @@ export default function UserHomeScreen({ navigation }) {
                     <Ionicons name="navigate-outline" size={24} color="#000" style={styles.activeIconFilter} />
                     <Text style={[styles.navText, { color: '#000', fontWeight: 'bold' }]}>Ride</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.navItem}>
-                    <Ionicons name="train-outline" size={24} color="#757575" />
-                    <Text style={styles.navText}>Metro</Text>
+                <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('MyRides')}>
+                    <Ionicons name="car-outline" size={24} color="#757575" />
+                    <Text style={styles.navText}>My Rides</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.navItem}>
-                    <Ionicons name="cube-outline" size={24} color="#757575" />
-                    <Text style={styles.navText}>Parcel</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.navItem}>
-                    <Ionicons name="umbrella-outline" size={24} color="#757575" />
-                    <Text style={styles.navText}>Travel</Text>
+                <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('Notification')}>
+                    <Ionicons name="notifications-outline" size={24} color="#757575" />
+                    <Text style={styles.navText}>Notification</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('Profile')}>
                     <Ionicons name="person-outline" size={24} color="#757575" />
