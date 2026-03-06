@@ -302,7 +302,10 @@ export default function UserHomeScreen({ navigation }) {
 
       {/* Bottom Navigation */}
       <View style={styles.bottomNav}>
-        <TouchableOpacity style={styles.navItem}>
+        <TouchableOpacity
+          style={styles.navItem}
+          onPress={() => navigation.navigate("UserHome")}
+        >
           <Ionicons
             name="navigate-outline"
             size={24}
@@ -313,17 +316,19 @@ export default function UserHomeScreen({ navigation }) {
             {t("userHome.navRide")}
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
-          <Ionicons name="train-outline" size={24} color="#757575" />
-          <Text style={styles.navText}>{t("userHome.navMetro")}</Text>
+        <TouchableOpacity
+          style={styles.navItem}
+          onPress={() => navigation.navigate("MyRides")}
+        >
+          <Ionicons name="car-outline" size={24} color="#757575" />
+          <Text style={styles.navText}>My Rides</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
-          <Ionicons name="cube-outline" size={24} color="#757575" />
-          <Text style={styles.navText}>{t("userHome.navParcel")}</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
-          <Ionicons name="umbrella-outline" size={24} color="#757575" />
-          <Text style={styles.navText}>{t("userHome.navTravel")}</Text>
+        <TouchableOpacity
+          style={styles.navItem}
+          onPress={() => navigation.navigate("Notification")}
+        >
+          <Ionicons name="notifications-outline" size={24} color="#757575" />
+          <Text style={styles.navText}>Notification</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.navItem}

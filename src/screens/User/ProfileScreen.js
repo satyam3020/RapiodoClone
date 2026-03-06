@@ -77,7 +77,18 @@ export default function ProfileScreen({ navigation }) {
         {/* Menu Items */}
         <View style={styles.menuList}>
           {MENU_ITEMS.map((item) => (
-            <TouchableOpacity key={item.id} style={styles.menuItem}>
+            <TouchableOpacity
+              key={item.id}
+              style={styles.menuItem}
+              onPress={() => {
+                if (item.title === "Help") navigation.navigate("Help");
+                else if (item.title === "My Rides")
+                  navigation.navigate("MyRides");
+                else if (item.title === "Safety") navigation.navigate("Safety");
+                else if (item.title === "Notifications")
+                  navigation.navigate("Notification");
+              }}
+            >
               <View style={styles.menuIconContainer}>
                 <Ionicons name={item.icon} size={22} color="#1E2B4D" />
               </View>
@@ -127,17 +138,19 @@ export default function ProfileScreen({ navigation }) {
           <Ionicons name="navigate-outline" size={24} color="#757575" />
           <Text style={styles.navText}>Ride</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
-          <Ionicons name="train-outline" size={24} color="#757575" />
-          <Text style={styles.navText}>Metro</Text>
+        <TouchableOpacity
+          style={styles.navItem}
+          onPress={() => navigation.navigate("MyRides")}
+        >
+          <Ionicons name="car-outline" size={24} color="#757575" />
+          <Text style={styles.navText}>My Rides</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
-          <Ionicons name="cube-outline" size={24} color="#757575" />
-          <Text style={styles.navText}>Parcel</Text>
-        </TouchableOpacity>
-        <TouchableOpacity style={styles.navItem}>
-          <Ionicons name="umbrella-outline" size={24} color="#757575" />
-          <Text style={styles.navText}>Travel</Text>
+        <TouchableOpacity
+          style={styles.navItem}
+          onPress={() => navigation.navigate("Notification")}
+        >
+          <Ionicons name="notifications-outline" size={24} color="#757575" />
+          <Text style={styles.navText}>Notification</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.navItem}>
           <Ionicons name="person" size={24} color="#000" />
@@ -291,6 +304,17 @@ const styles = StyleSheet.create({
   earnImage: {
     width: 120,
     height: "100%",
+  },
+  logoutButton: {
+    flexDirection: "row",
+    alignItems: "center",
+    paddingVertical: 15,
+    marginTop: 10,
+  },
+  logoutText: {
+    fontSize: 16,
+    fontWeight: "bold",
+    color: "#D32F2F",
   },
   bottomNav: {
     position: "absolute",
