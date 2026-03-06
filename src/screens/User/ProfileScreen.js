@@ -7,17 +7,9 @@ import { Colors } from '../../constants/Colors';
 
 const MENU_ITEMS = [
     { id: '1', title: 'Help', icon: 'help-circle-outline' },
-    { id: '2', title: 'Parcel - Send Items', icon: 'cube-outline' },
-    { id: '3', title: 'Payment', icon: 'wallet-outline' },
-    { id: '4', title: 'My Rides', icon: 'time-outline' },
-    { id: '5', title: 'Safety', icon: 'shield-checkmark-outline' },
-    { id: '6', title: 'Refer and Earn', icon: 'gift-outline', subtitle: 'Get ₹50' },
-    { id: '7', title: 'My Rewards', icon: 'star-outline' },
-    { id: '8', title: 'Power Pass', icon: 'card-outline' },
-    { id: '9', title: 'Rapido Coins', icon: 'aperture-outline' },
-    { id: '10', title: 'Notifications', icon: 'notifications-outline' },
-    { id: '11', title: 'Claims', icon: 'shield-outline' },
-    { id: '12', title: 'Settings', icon: 'settings-outline' },
+    { id: '2', title: 'My Rides', icon: 'time-outline' },
+    { id: '3', title: 'Safety', icon: 'shield-checkmark-outline' },
+    { id: '4', title: 'Notifications', icon: 'notifications-outline' },
 ];
 
 export default function ProfileScreen({ navigation }) {
@@ -62,7 +54,16 @@ export default function ProfileScreen({ navigation }) {
                 {/* Menu Items */}
                 <View style={styles.menuList}>
                     {MENU_ITEMS.map((item) => (
-                        <TouchableOpacity key={item.id} style={styles.menuItem}>
+                        <TouchableOpacity
+                            key={item.id}
+                            style={styles.menuItem}
+                            onPress={() => {
+                                if (item.title === 'Help') navigation.navigate('Help');
+                                else if (item.title === 'My Rides') navigation.navigate('MyRides');
+                                else if (item.title === 'Safety') navigation.navigate('Safety');
+                                else if (item.title === 'Notifications') navigation.navigate('Notification');
+                            }}
+                        >
                             <View style={styles.menuIconContainer}>
                                 <Ionicons name={item.icon} size={22} color="#1E2B4D" />
                             </View>
@@ -101,17 +102,13 @@ export default function ProfileScreen({ navigation }) {
                     <Ionicons name="navigate-outline" size={24} color="#757575" />
                     <Text style={styles.navText}>Ride</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.navItem}>
-                    <Ionicons name="train-outline" size={24} color="#757575" />
-                    <Text style={styles.navText}>Metro</Text>
+                <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('MyRides')}>
+                    <Ionicons name="car-outline" size={24} color="#757575" />
+                    <Text style={styles.navText}>My Rides</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.navItem}>
-                    <Ionicons name="cube-outline" size={24} color="#757575" />
-                    <Text style={styles.navText}>Parcel</Text>
-                </TouchableOpacity>
-                <TouchableOpacity style={styles.navItem}>
-                    <Ionicons name="umbrella-outline" size={24} color="#757575" />
-                    <Text style={styles.navText}>Travel</Text>
+                <TouchableOpacity style={styles.navItem} onPress={() => navigation.navigate('Notification')}>
+                    <Ionicons name="notifications-outline" size={24} color="#757575" />
+                    <Text style={styles.navText}>Notification</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.navItem}>
                     <Ionicons name="person" size={24} color="#000" />
