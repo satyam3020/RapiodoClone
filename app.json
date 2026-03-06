@@ -1,7 +1,8 @@
 {
   "expo": {
-    "name": "RapiodoClone",
-    "slug": "RapiodoClone",
+    "sdkVersion": "54.0.0",
+    "name": "VahaniQ-Partner",
+    "slug": "VahaniQ-Partner",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -24,6 +25,13 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "updates": {
+      "enabled": false
+    },
+    "plugins": [
+      "expo-asset",
+      "expo-router"
+    ]
   }
 }
