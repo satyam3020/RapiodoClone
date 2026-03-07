@@ -1,22 +1,18 @@
 import { SafeAreaView } from "react-native-safe-area-context";
-import React, { useState } from "react";
-import {
-  View,
-  Text,
-  StyleSheet,
-  TouchableOpacity,
-  ScrollView,
-} from "react-native";
+import { View, Text, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
 import { Colors } from "../../constants/Colors";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { AppContext } from "../../context/AppContext";
+import React, { useState, useContext } from "react";
 
 const VEHICLES = [
-  { id: "bike", label: "बाइक", icon: "motorbike" },
-  { id: "auto", label: "ऑटो", icon: "rickshaw" },
-  { id: "cab", label: "कैब", icon: "car-side" },
+  { id: "bike", icon: "motorbike" },
+  { id: "auto", icon: "rickshaw" },
+  { id: "cab", icon: "car-side" },
 ];
 
 export default function DriverVehicleSelectionScreen({ navigation }) {
+  const { t } = useContext(AppContext);
   const [selectedVehicle, setSelectedVehicle] = useState(null);
 
   return (
@@ -29,11 +25,11 @@ export default function DriverVehicleSelectionScreen({ navigation }) {
             style={styles.headerLeft}
           >
             <Ionicons name="arrow-back" size={28} color="black" />
-            <Text style={styles.headerTitle}>वाहन को चुनें</Text>
+            <Text style={styles.headerTitle}>{t("driverAuth.selectVehicleTitle")}</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.helpButton}>
             <Ionicons name="headset" size={16} color="black" />
-            <Text style={styles.helpText}>हेल्प</Text>
+            <Text style={styles.helpText}>{t("userAuth.help")}</Text>
           </TouchableOpacity>
         </View>
 
@@ -55,7 +51,7 @@ export default function DriverVehicleSelectionScreen({ navigation }) {
                   color={vehicle.id === "auto" ? "#4CAF50" : "#424242"} // Auto is green/yellow in screenshot
                 />
               </View>
-              <Text style={styles.vehicleLabel}>{vehicle.label}</Text>
+              <Text style={styles.vehicleLabel}>{t("app." + vehicle.id)}</Text>
             </TouchableOpacity>
           ))}
         </ScrollView>
@@ -78,7 +74,7 @@ export default function DriverVehicleSelectionScreen({ navigation }) {
                 selectedVehicle && styles.confirmButtonTextActive,
               ]}
             >
-              वाहन चुनें
+              {t("driverAuth.selectVehicleBtn")}
             </Text>
           </TouchableOpacity>
         </View>

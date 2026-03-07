@@ -19,11 +19,11 @@ const { width, height } = Dimensions.get("window");
 
 export default function DriverDocumentUploadScreen({ navigation }) {
   const [image, setImage] = useState(null);
-  const { setUser, setRole } = useContext(AppContext);
+  const { setUser, setRole, t } = useContext(AppContext);
 
   const finishUpload = (uri) => {
     setImage(uri);
-    Alert.alert("Success", "प्रोफ़ाइल पूरी हो गई! (Profile Complete!)", [
+    Alert.alert(t("driverAuth.successTitle"), t("driverAuth.successProfileMsg"), [
       {
         text: "OK",
         onPress: () => {
@@ -82,7 +82,7 @@ export default function DriverDocumentUploadScreen({ navigation }) {
                 </View>
                 <TouchableOpacity style={styles.helpButton}>
                   <Ionicons name="headset" size={16} color="black" />
-                  <Text style={styles.helpText}>हेल्प</Text>
+                  <Text style={styles.helpText}>{t("userAuth.help")}</Text>
                 </TouchableOpacity>
               </View>
             </View>
@@ -111,11 +111,11 @@ export default function DriverDocumentUploadScreen({ navigation }) {
 
       {/* Bottom Sheet */}
       <View style={styles.bottomSheet}>
-        <Text style={styles.title}>ड्राइविंग लाइसेंस अपलोड करें</Text>
-        <Text style={styles.subtitle}>आपके DL का एक तरफ</Text>
+        <Text style={styles.title}>{t("driverAuth.uploadDlTitle")}</Text>
+        <Text style={styles.subtitle}>{t("driverAuth.uploadDlSubtitle")}</Text>
 
         <RapidoButton
-          title="फोटो खींचें"
+          title={t("driverAuth.takePhotoBtn")}
           icon={
             <Ionicons
               name="camera"
@@ -136,7 +136,7 @@ export default function DriverDocumentUploadScreen({ navigation }) {
             color="black"
             style={{ marginRight: 10 }}
           />
-          <Text style={styles.secondaryButtonText}>गैलरी से अपलोड करें</Text>
+          <Text style={styles.secondaryButtonText}>{t("driverAuth.uploadGalleryBtn")}</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

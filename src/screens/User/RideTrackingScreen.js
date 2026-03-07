@@ -8,7 +8,7 @@ import {
   ActivityIndicator,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import MapView, { Marker, Polyline } from "react-native-maps";
+import FreeMap from "../../components/FreeMap";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 
 const { width, height } = Dimensions.get("window");
@@ -42,7 +42,7 @@ export default function RideTrackingScreen({ navigation }) {
         {(step === 2 || step === 3) && (
           <View style={styles.topNotification}>
             <View style={styles.topNotifHeader}>
-              <Text style={styles.appNameNotif}>rapido • now</Text>
+              <Text style={styles.appNameNotif}>VahaniQ • now</Text>
               <Ionicons name="notifications" size={16} color="#424242" />
             </View>
             <Text style={styles.topNotifTitle}>
@@ -62,34 +62,19 @@ export default function RideTrackingScreen({ navigation }) {
           </View>
         )}
 
-        <MapView
+        <FreeMap
           style={styles.map}
-          initialRegion={{
-            latitude: 19.25,
-            longitude: 72.86,
-            latitudeDelta: 0.05,
-            longitudeDelta: 0.05,
-          }}
-        >
-          {/* Simulated Map Elements */}
-          <Marker coordinate={{ latitude: 19.26, longitude: 72.865 }}>
-            <Ionicons name="location" size={30} color="#D32F2F" />
-          </Marker>
-          <Marker coordinate={{ latitude: 19.24, longitude: 72.855 }}>
-            <View style={styles.pickupMarker}>
-              <View style={styles.pickupDot} />
-            </View>
-          </Marker>
-          <Polyline
-            coordinates={[
-              { latitude: 19.24, longitude: 72.855 },
-              { latitude: 19.25, longitude: 72.86 },
-              { latitude: 19.26, longitude: 72.865 },
-            ]}
-            strokeColor="#1E88E5"
-            strokeWidth={4}
-          />
-        </MapView>
+          initialRegion={{ latitude: 19.25, longitude: 72.86 }}
+          markers={[
+            { latitude: 19.26, longitude: 72.865 },
+            { latitude: 19.24, longitude: 72.855 }
+          ]}
+          polyline={[
+            { latitude: 19.24, longitude: 72.855 },
+            { latitude: 19.25, longitude: 72.86 },
+            { latitude: 19.26, longitude: 72.865 },
+          ]}
+        />
       </View>
 
       {/* Bottom Sheet UI */}

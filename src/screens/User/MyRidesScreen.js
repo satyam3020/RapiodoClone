@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   View,
   Text,
@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { AppContext } from "../../context/AppContext";
 
 const MOCK_RIDES = [
   {
@@ -74,6 +75,7 @@ const MOCK_RIDES = [
 ];
 
 export default function MyRidesScreen({ navigation }) {
+  const { t } = useContext(AppContext);
   const [activeTab, setActiveTab] = useState("all");
 
   const filteredRides =
@@ -85,8 +87,8 @@ export default function MyRidesScreen({ navigation }) {
     <SafeAreaView style={styles.safeArea}>
       {/* Header */}
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>My Rides</Text>
-        <Text style={styles.headerSubtitle}>Your ride history</Text>
+        <Text style={styles.headerTitle}>{t("myRides.title")}</Text>
+        <Text style={styles.headerSubtitle}>{t("myRides.subtitle")}</Text>
       </View>
 
       {/* Filter Tabs */}
@@ -106,7 +108,7 @@ export default function MyRidesScreen({ navigation }) {
                 activeTab === tab && styles.filterTabTextActive,
               ]}
             >
-              {tab.charAt(0).toUpperCase() + tab.slice(1)}
+              {t(`myRides.${tab}`)}
             </Text>
           </TouchableOpacity>
         ))}
@@ -119,7 +121,7 @@ export default function MyRidesScreen({ navigation }) {
         {filteredRides.length === 0 ? (
           <View style={styles.emptyContainer}>
             <MaterialCommunityIcons name="car-off" size={60} color="#E0E0E0" />
-            <Text style={styles.emptyText}>No rides found</Text>
+            <Text style={styles.emptyText}>{t("myRides.noRides")}</Text>
           </View>
         ) : (
           filteredRides.map((ride) => (
@@ -201,12 +203,12 @@ export default function MyRidesScreen({ navigation }) {
           onPress={() => navigation.navigate("UserHome")}
         >
           <Ionicons name="navigate-outline" size={24} color="#757575" />
-          <Text style={styles.navText}>Ride</Text>
+          <Text style={styles.navText}>{t("userHome.navRide")}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.navItem}>
           <Ionicons name="car-outline" size={24} color="#000" />
           <Text style={[styles.navText, { color: "#000", fontWeight: "bold" }]}>
-            My Rides
+            {t("profile.myRides")}
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -214,14 +216,14 @@ export default function MyRidesScreen({ navigation }) {
           onPress={() => navigation.navigate("Notification")}
         >
           <Ionicons name="notifications-outline" size={24} color="#757575" />
-          <Text style={styles.navText}>Notification</Text>
+          <Text style={styles.navText}>{t("profile.notifications")}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.navItem}
           onPress={() => navigation.navigate("Profile")}
         >
           <Ionicons name="person-outline" size={24} color="#757575" />
-          <Text style={styles.navText}>Profile</Text>
+          <Text style={styles.navText}>{t("profile.title")}</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

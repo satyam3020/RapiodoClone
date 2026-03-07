@@ -1,6 +1,6 @@
 export const Colors = {
-    primary: '#FFD501', // Rapido Yellow
-    secondary: '#001C31', // Rapido Dark Blue
+    primary: '#FFD501', // VahaniQ Yellow
+    secondary: '#001C31', // VahaniQ Dark Blue
     background: '#FFFFFF',
     text: '#1A1A1A',
     textLight: '#757575',

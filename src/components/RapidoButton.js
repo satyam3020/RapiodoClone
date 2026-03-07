@@ -18,7 +18,7 @@ const styles = StyleSheet.create({
     button: {
         backgroundColor: Colors.primary,
         height: 56,
-        borderRadius: 12, // Rapido uses slightly rounded but distinct corners
+        borderRadius: 12, // VahaniQ uses slightly rounded but distinct corners
         justifyContent: 'center',
         alignItems: 'center',
         width: '100%',

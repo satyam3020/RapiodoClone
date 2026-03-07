@@ -13,27 +13,14 @@ import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Colors } from "../../constants/Colors";
 
 const MENU_ITEMS = [
-  { id: "1", title: "Help", icon: "help-circle-outline" },
-  { id: "2", title: "Parcel - Send Items", icon: "cube-outline" },
-  { id: "3", title: "Payment", icon: "wallet-outline" },
-  { id: "4", title: "My Rides", icon: "time-outline" },
-  { id: "5", title: "Safety", icon: "shield-checkmark-outline" },
-  {
-    id: "6",
-    title: "Refer and Earn",
-    icon: "gift-outline",
-    subtitle: "Get ₹50",
-  },
-  { id: "7", title: "My Rewards", icon: "star-outline" },
-  { id: "8", title: "Power Pass", icon: "card-outline" },
-  { id: "9", title: "Rapido Coins", icon: "aperture-outline" },
-  { id: "10", title: "Notifications", icon: "notifications-outline" },
-  { id: "11", title: "Claims", icon: "shield-outline" },
-  { id: "12", title: "Settings", icon: "settings-outline" },
+  { id: "1", title: "Help", tKey: "profile.help", nav: "Help", icon: "help-circle-outline" },
+  { id: "2", title: "My Rides", tKey: "profile.myRides", nav: "MyRides", icon: "time-outline" },
+  { id: "3", title: "Safety", tKey: "profile.safety", nav: "Safety", icon: "shield-checkmark-outline" },
+  { id: "4", title: "Notifications", tKey: "profile.notifications", nav: "Notification", icon: "notifications-outline" },
 ];
 
 export default function ProfileScreen({ navigation }) {
-  const { setUser, setRole } = useContext(AppContext);
+  const { setUser, setRole, t } = useContext(AppContext);
 
   const handleLogout = () => {
     setUser(null);
@@ -43,7 +30,7 @@ export default function ProfileScreen({ navigation }) {
   return (
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.header}>
-        <Text style={styles.headerTitle}>Profile</Text>
+        <Text style={styles.headerTitle}>{t("profile.title")}</Text>
       </View>
 
       <ScrollView
@@ -69,7 +56,7 @@ export default function ProfileScreen({ navigation }) {
 
           <TouchableOpacity style={styles.ratingRow}>
             <Ionicons name="star" size={20} color="#FFC107" />
-            <Text style={styles.ratingText}>4.86 My Rating</Text>
+            <Text style={styles.ratingText}>4.86 {t("profile.myRating")}</Text>
             <Ionicons name="chevron-forward" size={20} color="#1E2B4D" />
           </TouchableOpacity>
         </View>
@@ -81,19 +68,14 @@ export default function ProfileScreen({ navigation }) {
               key={item.id}
               style={styles.menuItem}
               onPress={() => {
-                if (item.title === "Help") navigation.navigate("Help");
-                else if (item.title === "My Rides")
-                  navigation.navigate("MyRides");
-                else if (item.title === "Safety") navigation.navigate("Safety");
-                else if (item.title === "Notifications")
-                  navigation.navigate("Notification");
+                navigation.navigate(item.nav);
               }}
             >
               <View style={styles.menuIconContainer}>
                 <Ionicons name={item.icon} size={22} color="#1E2B4D" />
               </View>
               <View style={styles.menuTextContainer}>
-                <Text style={styles.menuTitle}>{item.title}</Text>
+                <Text style={styles.menuTitle}>{t(item.tKey)}</Text>
                 {item.subtitle && (
                   <Text style={styles.menuSubtitle}>{item.subtitle}</Text>
                 )}
@@ -106,8 +88,8 @@ export default function ProfileScreen({ navigation }) {
         {/* Earn Money Banner */}
         <View style={styles.earnBanner}>
           <View style={styles.earnContent}>
-            <Text style={styles.earnTitle}>Earn money with Rapido</Text>
-            <Text style={styles.earnSubtitle}>Become a Captain!</Text>
+            <Text style={styles.earnTitle}>{t("profile.earnTitle")}</Text>
+            <Text style={styles.earnSubtitle}>{t("profile.earnSubtitle")}</Text>
           </View>
           <Image
             source={{
@@ -125,7 +107,7 @@ export default function ProfileScreen({ navigation }) {
             color="#D32F2F"
             style={{ marginRight: 10 }}
           />
-          <Text style={styles.logoutText}>Log Out</Text>
+          <Text style={styles.logoutText}>{t("profile.logout")}</Text>
         </TouchableOpacity>
       </ScrollView>
 
@@ -136,26 +118,26 @@ export default function ProfileScreen({ navigation }) {
           onPress={() => navigation.navigate("UserHome")}
         >
           <Ionicons name="navigate-outline" size={24} color="#757575" />
-          <Text style={styles.navText}>Ride</Text>
+          <Text style={styles.navText}>{t("userHome.navRide")}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.navItem}
           onPress={() => navigation.navigate("MyRides")}
         >
           <Ionicons name="car-outline" size={24} color="#757575" />
-          <Text style={styles.navText}>My Rides</Text>
+          <Text style={styles.navText}>{t("profile.myRides")}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.navItem}
           onPress={() => navigation.navigate("Notification")}
         >
           <Ionicons name="notifications-outline" size={24} color="#757575" />
-          <Text style={styles.navText}>Notification</Text>
+          <Text style={styles.navText}>{t("profile.notifications")}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.navItem}>
           <Ionicons name="person" size={24} color="#000" />
           <Text style={[styles.navText, { color: "#000", fontWeight: "bold" }]}>
-            Profile
+            {t("profile.title")}
           </Text>
         </TouchableOpacity>
       </View>

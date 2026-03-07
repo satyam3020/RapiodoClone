@@ -45,7 +45,7 @@ export default function DriverRewardsScreen({ navigation }) {
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Ionicons name="arrow-back" size={28} color="black" />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Rapido Rewards</Text>
+        <Text style={styles.headerTitle}>VahaniQ Rewards</Text>
         <TouchableOpacity style={styles.helpButton}>
           <Ionicons name="headset" size={16} color="black" />
           <Text style={styles.helpText}>Help</Text>

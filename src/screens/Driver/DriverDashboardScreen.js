@@ -11,7 +11,7 @@ import {
   Switch,
   Alert,
 } from "react-native";
-import MapView, { Marker, Polyline } from "react-native-maps";
+import FreeMap from "../../components/FreeMap";
 import { AppContext } from "../../context/AppContext";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Colors } from "../../constants/Colors";
@@ -113,9 +113,9 @@ export default function DriverDashboardScreen({ navigation }) {
       <View style={styles.promoBanner}>
         <View style={styles.promoTextCol}>
           <View style={styles.promoBadge}>
-            <Text style={styles.promoBadgeText}>नीला परफॉरमेंस</Text>
+            <Text style={styles.promoBadgeText}>{t("driverDash.bluePerformance")}</Text>
           </View>
-          <Text style={styles.promoTitle}>14/20 पूरे हुए ऑर्डर</Text>
+          <Text style={styles.promoTitle}>{t("driverDash.completedOrdersText")}</Text>
           <TouchableOpacity style={styles.promoLink}>
             <Text style={styles.promoLinkText}>
               {t("driverDash.andKnowMore")}
@@ -134,8 +134,8 @@ export default function DriverDashboardScreen({ navigation }) {
           <Ionicons name="cash-outline" size={40} color={Colors.primary} />
           <MaterialCommunityIcons name="hand-peace" size={40} color="#FFCC80" />
         </View>
-        <Text style={styles.greetingName}>नमस्ते vijay pandey</Text>
-        <Text style={styles.greetingTime}>गुड इवनिंग</Text>
+        <Text style={styles.greetingName}>{t("driverDash.greeting")} vijay pandey</Text>
+        <Text style={styles.greetingTime}>{t("driverDash.goodEvening")}</Text>
       </View>
 
       {/* Action Bubbles */}
@@ -188,23 +188,16 @@ export default function DriverDashboardScreen({ navigation }) {
         <Ionicons name="chevron-down" size={20} color="black" />
       </View>
 
-      <MapView
+      <FreeMap
         style={styles.map}
         initialRegion={
           location || {
             latitude: 19.2333,
             longitude: 72.8633,
-            latitudeDelta: 0.05,
-            longitudeDelta: 0.05,
           }
         }
-      >
-        <Marker coordinate={{ latitude: 19.2333, longitude: 72.8633 }}>
-          <View style={styles.driverMarker}>
-            <View style={styles.driverMarkerInner} />
-          </View>
-        </Marker>
-      </MapView>
+        markers={[{ latitude: 19.2333, longitude: 72.8633 }]}
+      />
 
       <View style={styles.mapSideActions}>
         <TouchableOpacity style={styles.mapSideBtn}>
@@ -224,7 +217,7 @@ export default function DriverDashboardScreen({ navigation }) {
               color="#D32F2F"
               style={{ marginRight: 5 }}
             />
-            <Text style={styles.pillText}>सर्ज</Text>
+            <Text style={styles.pillText}>{t("driverDash.surge")}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.pillBtn}
@@ -236,7 +229,7 @@ export default function DriverDashboardScreen({ navigation }) {
               color="#E91E63"
               style={{ marginRight: 5 }}
             />
-            <Text style={styles.pillText}>गो टू</Text>
+            <Text style={styles.pillText}>{t("driverDash.goTo")}</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={styles.pillBtnIconOnly}
@@ -325,7 +318,7 @@ export default function DriverDashboardScreen({ navigation }) {
                 style={styles.acceptBtnYellow}
                 onPress={() => handleAccept(incomingRequests[0])}
               >
-                <Text style={styles.acceptBtnText}>Accept</Text>
+                <Text style={styles.acceptBtnText}>{t("driverDash.accept")}</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -371,10 +364,10 @@ export default function DriverDashboardScreen({ navigation }) {
               </View>
               <View>
                 <Text style={{ fontSize: 20, fontWeight: "bold" }}>
-                  प्रोफ़ाइल
+                  {t("userHome.navProfile")}
                 </Text>
                 <Text style={{ color: "#1A73E8", fontSize: 16 }}>
-                  नीला {">"}
+                  Blue {">"}
                 </Text>
               </View>
             </View>
@@ -401,10 +394,10 @@ export default function DriverDashboardScreen({ navigation }) {
                 <Text
                   style={{ fontSize: 18, color: "#424242", fontWeight: "bold" }}
                 >
-                  अर्निंग्स
+                  {t("driverDash.drawerEarnings")}
                 </Text>
                 <Text style={{ fontSize: 12, color: "#757575" }}>
-                  बैंक में पैसा ट्रांसफर करें, हिस्ट्री
+                  {t("driverDash.drawerEarningsSub")}
                 </Text>
               </View>
             </TouchableOpacity>
@@ -430,10 +423,10 @@ export default function DriverDashboardScreen({ navigation }) {
                 <Text
                   style={{ fontSize: 18, color: "#424242", fontWeight: "bold" }}
                 >
-                  एक्सेस फी
+                  {t("driverDash.drawerAccessFee")}
                 </Text>
                 <Text style={{ fontSize: 12, color: "#757575" }}>
-                  ₹0 कमीशन पर राइड करें
+                  {t("driverDash.drawerAccessFeeSub")}
                 </Text>
               </View>
             </TouchableOpacity>
@@ -459,10 +452,10 @@ export default function DriverDashboardScreen({ navigation }) {
                 <Text
                   style={{ fontSize: 18, color: "#424242", fontWeight: "bold" }}
                 >
-                  माइल्स बोनस
+                  {t("driverDash.drawerMilesBonus")}
                 </Text>
                 <Text style={{ fontSize: 12, color: "#757575" }}>
-                  Rapido पर बोनस कमाएं
+                  {t("driverDash.drawerMilesBonusSub")}
                 </Text>
               </View>
             </TouchableOpacity>
@@ -488,10 +481,10 @@ export default function DriverDashboardScreen({ navigation }) {
                 <Text
                   style={{ fontSize: 18, color: "#424242", fontWeight: "bold" }}
                 >
-                  रिवार्ड्स
+                  {t("driverDash.drawerRewards")}
                 </Text>
                 <Text style={{ fontSize: 12, color: "#757575" }}>
-                  बीमा और डिस्काउंट
+                  {t("driverDash.drawerRewardsSub")}
                 </Text>
               </View>
             </TouchableOpacity>
@@ -517,10 +510,10 @@ export default function DriverDashboardScreen({ navigation }) {
                 <Text
                   style={{ fontSize: 18, color: "#424242", fontWeight: "bold" }}
                 >
-                  सर्विस मैनेजर
+                  {t("driverDash.drawerServiceMgr")}
                 </Text>
                 <Text style={{ fontSize: 12, color: "#757575" }}>
-                  एक्टिवेशन स्टेटसाकी
+                  {t("driverDash.drawerServiceMgrSub")}
                 </Text>
               </View>
             </TouchableOpacity>
@@ -546,10 +539,10 @@ export default function DriverDashboardScreen({ navigation }) {
                 <Text
                   style={{ fontSize: 18, color: "#424242", fontWeight: "bold" }}
                 >
-                  हेल्प
+                  {t("driverDash.drawerHelp")}
                 </Text>
                 <Text style={{ fontSize: 12, color: "#757575" }}>
-                  मदद, एक्सीडेंट बिमा
+                  {t("driverDash.drawerHelpSub")}
                 </Text>
               </View>
             </TouchableOpacity>
@@ -579,7 +572,7 @@ export default function DriverDashboardScreen({ navigation }) {
               <Text
                 style={{ fontSize: 18, color: "#D32F2F", fontWeight: "bold" }}
               >
-                Logout (Switch Role)
+                {t("driverDash.drawerLogout")}
               </Text>
             </TouchableOpacity>
 
@@ -603,7 +596,7 @@ export default function DriverDashboardScreen({ navigation }) {
               />
               <View style={{ flex: 1 }}>
                 <Text style={{ fontSize: 14, color: "#4A148C" }}>
-                  अपने किसी दोस्त को रैपिडो के लिए...
+                  {t("driverDash.referFriend")}
                 </Text>
               </View>
               <TouchableOpacity
@@ -617,7 +610,7 @@ export default function DriverDashboardScreen({ navigation }) {
                 <Text
                   style={{ color: "#000", fontSize: 12, fontWeight: "bold" }}
                 >
-                  दोस्त को रेफर करें
+                  {t("driverDash.referBtn")}
                 </Text>
               </TouchableOpacity>
             </View>

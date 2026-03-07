@@ -274,7 +274,7 @@ export default function UserHomeScreen({ navigation }) {
 
         {/* Footer Illustration */}
         <View style={styles.footerIllustration}>
-          <Text style={styles.hashtagText}>#goRapido</Text>
+          <Text style={styles.hashtagText}>#goVahaniQ</Text>
           <View style={styles.madeInRow}>
             <Text style={styles.madeInText}>🇮🇳 Made for India</Text>
           </View>

@@ -172,7 +172,7 @@ const styles = StyleSheet.create({
   },
   activeTab: {
     borderBottomWidth: 3,
-    borderBottomColor: "#FFD501", // Rapido Yellow
+    borderBottomColor: "#FFD501", // VahaniQ Yellow
   },
   tabText: {
     fontSize: 16,

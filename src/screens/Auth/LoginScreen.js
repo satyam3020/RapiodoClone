@@ -7,6 +7,7 @@ import {
   TextInput,
   TouchableOpacity,
   KeyboardAvoidingView,
+  ScrollView,
   Platform,
   Dimensions,
 } from "react-native";
@@ -43,7 +44,7 @@ export default function LoginScreen({ navigation, route }) {
               <Text style={styles.helpText}>{t("userAuth.help")}</Text>
             </TouchableOpacity>
           </View>
-          <Text style={styles.logoText}>rapido</Text>
+          <Text style={styles.logoText}>VahaniQ</Text>
           {/* Placeholder for the vehicle illustrations */}
           <View style={styles.illustrationContainer}>
             <Ionicons
@@ -69,7 +70,11 @@ export default function LoginScreen({ navigation, route }) {
 
         {/* White Content Card */}
         <View style={styles.contentCard}>
-          <View style={styles.contentInner}>
+          <ScrollView
+            contentContainerStyle={styles.contentInner}
+            keyboardShouldPersistTaps="handled"
+            showsVerticalScrollIndicator={false}
+          >
             <Text style={styles.title}>{t("driverAuth.title")}</Text>
 
             <View style={styles.inputContainer}>
@@ -87,36 +92,36 @@ export default function LoginScreen({ navigation, route }) {
                 autoFocus
               />
             </View>
-          </View>
 
-          <View style={styles.footer}>
-            <Text style={styles.terms}>
-              {t("userAuth.terms")}
-              {"\n"}
-              <Text style={styles.linkText}>{t("userAuth.termsLink")}</Text>
-            </Text>
-            <TouchableOpacity
-              style={[
-                styles.nextButton,
-                phoneNumber.length >= 10
-                  ? styles.nextButtonActive
-                  : styles.nextButtonInactive,
-              ]}
-              onPress={handleNext}
-              disabled={phoneNumber.length < 10}
-            >
-              <Text
-                style={[
-                  styles.nextButtonText,
-                  phoneNumber.length >= 10
-                    ? styles.nextButtonTextActive
-                    : styles.nextButtonTextInactive,
-                ]}
-              >
-                {t("userOtp.next")}
+            <View style={styles.footer}>
+              <Text style={styles.terms}>
+                {t("userAuth.terms")}
+                {"\n"}
+                <Text style={styles.linkText}>{t("userAuth.termsLink")}</Text>
               </Text>
-            </TouchableOpacity>
-          </View>
+              <TouchableOpacity
+                style={[
+                  styles.nextButton,
+                  phoneNumber.length >= 10
+                    ? styles.nextButtonActive
+                    : styles.nextButtonInactive,
+                ]}
+                onPress={handleNext}
+                disabled={phoneNumber.length < 10}
+              >
+                <Text
+                  style={[
+                    styles.nextButtonText,
+                    phoneNumber.length >= 10
+                      ? styles.nextButtonTextActive
+                      : styles.nextButtonTextInactive,
+                  ]}
+                >
+                  {t("userOtp.next")}
+                </Text>
+              </TouchableOpacity>
+            </View>
+          </ScrollView>
         </View>
       </KeyboardAvoidingView>
     </SafeAreaView>
@@ -129,7 +134,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#1E2B4D", // Dark blue background matching screenshot
   },
   headerSection: {
-    height: height * 0.35,
+    height: height * 0.32,
     backgroundColor: "#1E2B4D",
     paddingHorizontal: 20,
     paddingTop: Platform.OS === "android" ? 40 : 20,

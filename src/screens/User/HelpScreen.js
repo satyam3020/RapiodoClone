@@ -65,7 +65,7 @@ const HELP_TOPICS = [
         id: "2a",
         title: "Captain was rude or unprofessional",
         answer:
-          "We are sorry to hear this. Rapido takes the behavior of captains very seriously. Please report the incident with details and we will take strict action. The captain may be warned, suspended, or permanently blocked based on severity.",
+          "We are sorry to hear this. VahaniQ takes the behavior of captains very seriously. Please report the incident with details and we will take strict action. The captain may be warned, suspended, or permanently blocked based on severity.",
       },
       {
         id: "2b",
@@ -110,7 +110,7 @@ const HELP_TOPICS = [
         id: "3b",
         title: "How to add/change payment method",
         answer:
-          "Go to the Payment section in your profile. You can add UPI, debit/credit cards, or use Rapido wallet. To change the default payment method, tap on the preferred option and set it as default.",
+          "Go to the Payment section in your profile. You can add UPI, debit/credit cards, or use VahaniQ wallet. To change the default payment method, tap on the preferred option and set it as default.",
       },
       {
         id: "3c",

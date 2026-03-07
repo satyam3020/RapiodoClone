@@ -8,7 +8,7 @@ import {
   Image,
   ScrollView,
 } from "react-native";
-import MapView, { Marker, Polyline } from "react-native-maps";
+import FreeMap from "../../components/FreeMap";
 import { AppContext } from "../../context/AppContext";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
 import { Colors } from "../../constants/Colors";
@@ -17,7 +17,7 @@ import { RapidoButton } from "../../components/RapidoButton";
 const { width, height } = Dimensions.get("window");
 
 export default function RideSelectionScreen({ navigation }) {
-  const { location, setActiveRide } = useContext(AppContext);
+  const { location, setActiveRide, t } = useContext(AppContext);
   const [selectedService, setSelectedService] = useState("auto");
 
   // Mock route data
@@ -48,27 +48,17 @@ export default function RideSelectionScreen({ navigation }) {
         <Ionicons name="arrow-back" size={24} color={Colors.secondary} />
       </TouchableOpacity>
 
-      <MapView
+      <FreeMap
         style={styles.map}
-        initialRegion={{
-          ...routeCoordinates[0],
-          latitudeDelta: 0.05,
-          longitudeDelta: 0.05,
-        }}
-      >
-        <Marker coordinate={routeCoordinates[0]} />
-        <Marker coordinate={routeCoordinates[1]} />
-        <Polyline
-          coordinates={routeCoordinates}
-          strokeWidth={4}
-          strokeColor={Colors.mapLine}
-        />
-      </MapView>
+        initialRegion={routeCoordinates[0]}
+        markers={[routeCoordinates[0], routeCoordinates[1]]}
+        polyline={routeCoordinates}
+      />
 
       <View style={styles.bottomSheet}>
         <View style={styles.dragHandle} />
         <Text style={styles.discountText}>
-          Saving ₹12 with special discount
+          {t("rideSelection.discount")}
         </Text>
 
         <ScrollView contentContainerStyle={styles.serviceList}>
@@ -87,7 +77,7 @@ export default function RideSelectionScreen({ navigation }) {
             />
             <View style={styles.serviceInfo}>
               <View style={styles.serviceHeader}>
-                <Text style={styles.serviceName}>Auto</Text>
+                <Text style={styles.serviceName}>{t("app.auto")}</Text>
                 <Ionicons
                   name="person"
                   size={12}
@@ -97,7 +87,7 @@ export default function RideSelectionScreen({ navigation }) {
                 <Text style={styles.passengerCount}>3</Text>
               </View>
               <Text style={styles.serviceDetails}>
-                3 mins away • Drop 5:36 pm
+                {t("rideSelection.etaDrop")}
               </Text>
             </View>
             <View style={styles.priceContainer}>
@@ -105,12 +95,12 @@ export default function RideSelectionScreen({ navigation }) {
             </View>
           </TouchableOpacity>
 
-          {/* Placeholder for other services to show Rapido layout */}
+          {/* Placeholder for other services to show VahaniQ layout */}
           <View style={[styles.serviceItem, { opacity: 0.5 }]}>
             <MaterialCommunityIcons name="motorbike" size={40} color="#666" />
             <View style={styles.serviceInfo}>
-              <Text style={styles.serviceName}>Bike</Text>
-              <Text style={styles.serviceDetails}>3 mins away • FASTEST</Text>
+              <Text style={styles.serviceName}>{t("app.bike")}</Text>
+              <Text style={styles.serviceDetails}>{t("rideSelection.etaFastest")}</Text>
             </View>
             <Text style={styles.price}>₹46</Text>
           </View>
@@ -124,7 +114,7 @@ export default function RideSelectionScreen({ navigation }) {
                 size={20}
                 color={Colors.secondary}
               />
-              <Text style={styles.paymentText}>Cash</Text>
+              <Text style={styles.paymentText}>{t("rideSelection.cash")}</Text>
               <Ionicons
                 name="chevron-forward"
                 size={16}
@@ -138,7 +128,7 @@ export default function RideSelectionScreen({ navigation }) {
                 size={20}
                 color={Colors.secondary}
               />
-              <Text style={styles.paymentText}>Offers</Text>
+              <Text style={styles.paymentText}>{t("rideSelection.offers")}</Text>
               <Ionicons
                 name="chevron-forward"
                 size={16}
@@ -148,7 +138,7 @@ export default function RideSelectionScreen({ navigation }) {
           </View>
 
           <RapidoButton
-            title={`Book Auto`}
+            title={t("generic.bookNow")}
             onPress={handleBookRide}
             style={styles.bookButton}
           />

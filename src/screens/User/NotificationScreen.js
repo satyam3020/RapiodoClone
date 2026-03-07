@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   View,
   Text,
@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { AppContext } from "../../context/AppContext";
 
 const MOCK_NOTIFICATIONS = [
   {
@@ -26,7 +27,7 @@ const MOCK_NOTIFICATIONS = [
     id: "2",
     title: "50% OFF on your next ride!",
     message:
-      "Use code RAPIDO50 to get 50% off (up to ₹75) on your next bike ride. Valid till 10 Mar.",
+      "Use code VAHANIQ50 to get 50% off (up to ₹75) on your next bike ride. Valid till 10 Mar.",
     time: "5 hours ago",
     type: "offer",
     icon: "pricetag",
@@ -48,7 +49,7 @@ const MOCK_NOTIFICATIONS = [
     id: "4",
     title: "Refer & Earn ₹50! 🎁",
     message:
-      "Invite your friends to Rapido and earn ₹50 for each referral. Share your code now!",
+      "Invite your friends to VahaniQ and earn ₹50 for each referral. Share your code now!",
     time: "2 days ago",
     type: "offer",
     icon: "gift",
@@ -79,9 +80,9 @@ const MOCK_NOTIFICATIONS = [
   },
   {
     id: "7",
-    title: "New: Rapido Coins! 🪙",
+    title: "New: VahaniQ Coins! 🪙",
     message:
-      "Earn Rapido Coins on every ride and redeem them for discounts. Start collecting now!",
+      "Earn VahaniQ Coins on every ride and redeem them for discounts. Start collecting now!",
     time: "5 days ago",
     type: "info",
     icon: "aperture",
@@ -91,6 +92,7 @@ const MOCK_NOTIFICATIONS = [
 ];
 
 export default function NotificationScreen({ navigation }) {
+  const { t } = useContext(AppContext);
   const [notifications, setNotifications] = useState(MOCK_NOTIFICATIONS);
 
   const unreadCount = notifications.filter((n) => !n.read).length;
@@ -110,7 +112,7 @@ export default function NotificationScreen({ navigation }) {
       {/* Header */}
       <View style={styles.header}>
         <View style={styles.headerLeft}>
-          <Text style={styles.headerTitle}>Notifications</Text>
+          <Text style={styles.headerTitle}>{t("notification.title")}</Text>
           {unreadCount > 0 && (
             <View style={styles.unreadBadge}>
               <Text style={styles.unreadBadgeText}>{unreadCount}</Text>
@@ -119,7 +121,7 @@ export default function NotificationScreen({ navigation }) {
         </View>
         {unreadCount > 0 && (
           <TouchableOpacity onPress={markAllRead}>
-            <Text style={styles.markAllText}>Mark all read</Text>
+            <Text style={styles.markAllText}>{t("notification.markAllRead")}</Text>
           </TouchableOpacity>
         )}
       </View>
@@ -135,9 +137,9 @@ export default function NotificationScreen({ navigation }) {
               size={60}
               color="#E0E0E0"
             />
-            <Text style={styles.emptyText}>No notifications yet</Text>
+            <Text style={styles.emptyText}>{t("notification.noNotif")}</Text>
             <Text style={styles.emptySubtext}>
-              We'll notify you about your rides and offers
+              {t("notification.noNotifSub")}
             </Text>
           </View>
         ) : (
@@ -184,19 +186,19 @@ export default function NotificationScreen({ navigation }) {
           onPress={() => navigation.navigate("UserHome")}
         >
           <Ionicons name="navigate-outline" size={24} color="#757575" />
-          <Text style={styles.navText}>Ride</Text>
+          <Text style={styles.navText}>{t("userHome.navRide")}</Text>
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.navItem}
           onPress={() => navigation.navigate("MyRides")}
         >
           <Ionicons name="car-outline" size={24} color="#757575" />
-          <Text style={styles.navText}>My Rides</Text>
+          <Text style={styles.navText}>{t("profile.myRides")}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.navItem}>
           <Ionicons name="notifications" size={24} color="#000" />
           <Text style={[styles.navText, { color: "#000", fontWeight: "bold" }]}>
-            Notification
+            {t("profile.notifications")}
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -204,7 +206,7 @@ export default function NotificationScreen({ navigation }) {
           onPress={() => navigation.navigate("Profile")}
         >
           <Ionicons name="person-outline" size={24} color="#757575" />
-          <Text style={styles.navText}>Profile</Text>
+          <Text style={styles.navText}>{t("profile.title")}</Text>
         </TouchableOpacity>
       </View>
     </SafeAreaView>

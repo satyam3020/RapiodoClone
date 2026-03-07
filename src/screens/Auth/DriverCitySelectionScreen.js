@@ -1,11 +1,13 @@
 import { SafeAreaView } from "react-native-safe-area-context";
-import React from "react";
+import React, { useContext } from "react";
 import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 import { Colors } from "../../constants/Colors";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
 import { RapidoButton } from "../../components/RapidoButton";
+import { AppContext } from "../../context/AppContext";
 
 export default function DriverCitySelectionScreen({ navigation }) {
+  const { t } = useContext(AppContext);
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.content}>
@@ -16,7 +18,7 @@ export default function DriverCitySelectionScreen({ navigation }) {
           </TouchableOpacity>
           <TouchableOpacity style={styles.helpButton}>
             <Ionicons name="headset" size={16} color="black" />
-            <Text style={styles.helpText}>हेल्प</Text>
+            <Text style={styles.helpText}>{t("userAuth.help")}</Text>
           </TouchableOpacity>
         </View>
 
@@ -34,18 +36,18 @@ export default function DriverCitySelectionScreen({ navigation }) {
         </View>
 
         {/* Title */}
-        <Text style={styles.title}>आप किस शहर में राइड करना चाहते हैं?</Text>
+        <Text style={styles.title}>{t("driverAuth.cityTitle")}</Text>
 
         {/* City Card */}
         <View style={styles.cityCard}>
-          <Text style={styles.cardLabel}>आप यहाँ राइड करेंगे</Text>
+          <Text style={styles.cardLabel}>{t("driverAuth.cityLabel")}</Text>
           <View style={styles.cityRow}>
             <View style={styles.cityLeft}>
               <Ionicons name="location" size={24} color="#1A73E8" />
               <Text style={styles.cityName}>Mumbai</Text>
             </View>
             <TouchableOpacity>
-              <Text style={styles.changeText}>परिवर्तन</Text>
+              <Text style={styles.changeText}>{t("driverAuth.changeBtn")}</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -53,7 +55,7 @@ export default function DriverCitySelectionScreen({ navigation }) {
         {/* Footer */}
         <View style={styles.footer}>
           <RapidoButton
-            title="शहर कन्फर्म करें"
+            title={t("driverAuth.confirmCityBtn")}
             onPress={() => navigation.navigate("DriverVehicleSelection")}
             style={styles.confirmButton}
             textStyle={styles.confirmButtonText}

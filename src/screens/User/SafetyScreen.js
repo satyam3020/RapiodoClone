@@ -55,7 +55,7 @@ const SAFETY_FEATURES = [
     iconColor: "#FFF",
     bgColor: "#6A1B9A",
     description:
-      "Every Rapido ride comes with complimentary insurance coverage. This covers accidental injuries during the ride for both riders and captains, providing financial protection and peace of mind.",
+      "Every VahaniQ ride comes with complimentary insurance coverage. This covers accidental injuries during the ride for both riders and captains, providing financial protection and peace of mind.",
   },
   {
     id: "5",
@@ -65,7 +65,7 @@ const SAFETY_FEATURES = [
     iconColor: "#FFF",
     bgColor: "#E65100",
     description:
-      "All Rapido captains undergo thorough background verification including identity checks, driving license verification, criminal record checks, and vehicle inspection before they can start accepting rides.",
+      "All VahaniQ captains undergo thorough background verification including identity checks, driving license verification, criminal record checks, and vehicle inspection before they can start accepting rides.",
   },
 ];
 
@@ -121,7 +121,7 @@ export default function SafetyScreen({ navigation }) {
         {/* Intro */}
         <View style={styles.introContainer}>
           <Text style={styles.introText}>
-            At Rapido, your safety comes first. Here are some measures and
+            At VahaniQ, your safety comes first. Here are some measures and
             provisions to ensure your safety.
           </Text>
           <TouchableOpacity>

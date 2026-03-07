@@ -19,7 +19,7 @@ import { Colors } from "../../constants/Colors";
 
 export default function RegisterScreen({ navigation, route }) {
   const { phone } = route.params || { phone: "0000000000" };
-  const { setUser, setRole } = useContext(AppContext);
+  const { setUser, setRole, t } = useContext(AppContext);
 
   const [name, setName] = useState("");
   const [gender, setGender] = useState(null); // 'Male', 'Female', 'Other'
@@ -53,16 +53,16 @@ export default function RegisterScreen({ navigation, route }) {
           <TouchableOpacity onPress={() => navigation.goBack()}>
             <Ionicons name="arrow-back" size={28} color="black" />
           </TouchableOpacity>
-          <Text style={styles.headerTitle}>One last step</Text>
+          <Text style={styles.headerTitle}>{t("userAuth.oneLastStep")}</Text>
           <TouchableOpacity style={styles.helpButton}>
             <Ionicons name="help-circle-outline" size={18} color="black" />
-            <Text style={styles.helpText}>Help</Text>
+            <Text style={styles.helpText}>{t("userAuth.help")}</Text>
           </TouchableOpacity>
         </View>
 
         {/* Name Input */}
         <View style={styles.section}>
-          <Text style={styles.label}>Your name</Text>
+          <Text style={styles.label}>{t("userAuth.yourName")}</Text>
           <View style={styles.inputContainer}>
             <Ionicons
               name="person-circle-outline"
@@ -72,7 +72,7 @@ export default function RegisterScreen({ navigation, route }) {
             />
             <TextInput
               style={styles.input}
-              placeholder="Type your name"
+              placeholder={t("userAuth.typeYourName")}
               value={name}
               onChangeText={setName}
               autoFocus
@@ -82,7 +82,7 @@ export default function RegisterScreen({ navigation, route }) {
 
         {/* Gender Selector */}
         <View style={styles.section}>
-          <Text style={styles.label}>Gender</Text>
+          <Text style={styles.label}>{t("userAuth.gender")}</Text>
           <View style={styles.genderContainer}>
             {["Male", "Female", "Other"].map((g) => (
               <TouchableOpacity
@@ -103,7 +103,7 @@ export default function RegisterScreen({ navigation, route }) {
                       : styles.genderTextInactive,
                   ]}
                 >
-                  {g}
+                  {t("userAuth." + g.toLowerCase())}
                 </Text>
               </TouchableOpacity>
             ))}
@@ -122,7 +122,7 @@ export default function RegisterScreen({ navigation, route }) {
               color="#25D366"
               style={styles.checkboxIconList}
             />
-            <Text style={styles.checkboxText}>Receive updates on Whatsapp</Text>
+            <Text style={styles.checkboxText}>{t("userAuth.whatsappUpdates")}</Text>
             <MaterialCommunityIcons
               name={
                 whatsappUpdates ? "checkbox-marked" : "checkbox-blank-outline"
@@ -142,7 +142,7 @@ export default function RegisterScreen({ navigation, route }) {
               color="#E91E63"
               style={styles.checkboxIconList}
             />
-            <Text style={styles.checkboxText}>Have a referral code?</Text>
+            <Text style={styles.checkboxText}>{t("userAuth.referralCode")}</Text>
             <MaterialCommunityIcons
               name={hasReferral ? "checkbox-marked" : "checkbox-blank-outline"}
               size={24}
@@ -169,7 +169,7 @@ export default function RegisterScreen({ navigation, route }) {
                   : styles.nextButtonTextInactive,
               ]}
             >
-              Next
+              {t("generic.next")}
             </Text>
           </TouchableOpacity>
         </View>
