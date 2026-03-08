@@ -161,15 +161,20 @@ export default function HelpScreen({ navigation }) {
   const [expandedSubTopic, setExpandedSubTopic] = useState(null);
   const [showTickets, setShowTickets] = useState(false);
 
+  const TRANSLATED_HELP_TOPICS = HELP_TOPICS.map(topic => ({
+    ...topic,
+    title: topic.id === "1" ? t("userHelp.topic_fare") : topic.id === "2" ? t("userHelp.topic_captain") : t("userHelp.topic_other")
+  }));
+
   // Filter help topics based on search
   const filteredTopics = searchQuery.trim()
-    ? HELP_TOPICS.map((topic) => ({
+    ? TRANSLATED_HELP_TOPICS.map((topic) => ({
       ...topic,
       subTopics: topic.subTopics.filter((sub) =>
         sub.title.toLowerCase().includes(searchQuery.toLowerCase()),
       ),
     })).filter((topic) => topic.subTopics.length > 0)
-    : HELP_TOPICS;
+    : TRANSLATED_HELP_TOPICS;
 
   const toggleTopic = (topicId) => {
     setExpandedTopic(expandedTopic === topicId ? null : topicId);

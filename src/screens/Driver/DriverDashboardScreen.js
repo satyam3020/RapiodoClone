@@ -413,8 +413,8 @@ export default function DriverDashboardScreen({ navigation }) {
                 navigation.navigate("DriverAccessFee");
               }}
             >
-              <MaterialCommunityIcons
-                name="brightness-percent"
+              <Ionicons
+                name="pricetag-outline"
                 size={24}
                 color="#424242"
                 style={{ marginRight: 15 }}

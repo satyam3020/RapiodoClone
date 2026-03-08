@@ -12,6 +12,8 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { useContext } from "react";
+import { AppContext } from "../../context/AppContext";
 
 const { width } = Dimensions.get("window");
 const CARD_WIDTH = width * 0.55;
@@ -90,6 +92,7 @@ const SAFETY_TIPS = [
 ];
 
 export default function SafetyScreen({ navigation }) {
+  const { t } = useContext(AppContext);
   const [shareLocation, setShareLocation] = useState(false);
   const [rideAlerts, setRideAlerts] = useState(true);
   const [selectedFeature, setSelectedFeature] = useState(null);
@@ -110,7 +113,7 @@ export default function SafetyScreen({ navigation }) {
         >
           <Ionicons name="arrow-back" size={24} color="#1E2B4D" />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Safety toolkit</Text>
+        <Text style={styles.headerTitle}>{t("safety.title")}</Text>
         <View style={{ width: 32 }} />
       </View>
 
@@ -120,12 +123,9 @@ export default function SafetyScreen({ navigation }) {
       >
         {/* Intro */}
         <View style={styles.introContainer}>
-          <Text style={styles.introText}>
-            At VahaniQ, your safety comes first. Here are some measures and
-            provisions to ensure your safety.
-          </Text>
+          <Text style={styles.introText}>{t("safety.intro")}</Text>
           <TouchableOpacity>
-            <Text style={styles.knowMoreText}>Know more</Text>
+            <Text style={styles.knowMoreText}>{t("safety.knowMore")}</Text>
           </TouchableOpacity>
         </View>
 
@@ -151,8 +151,8 @@ export default function SafetyScreen({ navigation }) {
                   color={feature.iconColor}
                 />
               </View>
-              <Text style={styles.featureTitle}>{feature.title}</Text>
-              <Text style={styles.featureSubtitle}>{feature.subtitle}</Text>
+              <Text style={styles.featureTitle}>{t(`safety.feature${feature.id}Title`)}</Text>
+              <Text style={styles.featureSubtitle}>{t(`safety.feature${feature.id}Sub`)}</Text>
               <View style={styles.featureArrow}>
                 <Ionicons
                   name="arrow-forward-circle"
@@ -172,7 +172,7 @@ export default function SafetyScreen({ navigation }) {
         </View>
 
         {/* Settings Section */}
-        <Text style={styles.sectionTitle}>Settings</Text>
+        <Text style={styles.sectionTitle}>{t("safety.settings")}</Text>
 
         {/* Trusted Contacts */}
         <TouchableOpacity
@@ -180,9 +180,9 @@ export default function SafetyScreen({ navigation }) {
           onPress={() => setShowContactModal(true)}
         >
           <View style={styles.settingsCardContent}>
-            <Text style={styles.settingsCardTitle}>New trusted contacts</Text>
+            <Text style={styles.settingsCardTitle}>{t("safety.newTrusted")}</Text>
             <Text style={styles.settingsCardSubtitle}>
-              share ride trip details with your loved ones in a single tap
+              {t("safety.shareRide")}
             </Text>
           </View>
           <Ionicons name="chevron-forward" size={20} color="#1E2B4D" />
@@ -194,9 +194,9 @@ export default function SafetyScreen({ navigation }) {
             <View style={styles.toggleInfo}>
               <Ionicons name="location-outline" size={22} color="#1E2B4D" />
               <View style={styles.toggleTextContainer}>
-                <Text style={styles.toggleTitle}>Auto-share live location</Text>
+                <Text style={styles.toggleTitle}>{t("safety.autoShare")}</Text>
                 <Text style={styles.toggleSubtitle}>
-                  Automatically share location when ride starts
+                  {t("safety.autoShareSub")}
                 </Text>
               </View>
             </View>
@@ -218,9 +218,9 @@ export default function SafetyScreen({ navigation }) {
                 color="#1E2B4D"
               />
               <View style={styles.toggleTextContainer}>
-                <Text style={styles.toggleTitle}>Ride safety alerts</Text>
+                <Text style={styles.toggleTitle}>{t("safety.rideAlerts")}</Text>
                 <Text style={styles.toggleSubtitle}>
-                  Get notified about safety features during ride
+                  {t("safety.rideAlertsSub")}
                 </Text>
               </View>
             </View>
@@ -234,7 +234,7 @@ export default function SafetyScreen({ navigation }) {
         </View>
 
         {/* Safety Tips */}
-        <Text style={styles.sectionTitle}>Safety tips</Text>
+        <Text style={styles.sectionTitle}>{t("safety.safetyTips")}</Text>
         <View style={styles.tipsContainer}>
           {SAFETY_TIPS.map((item, index) => (
             <View
@@ -247,7 +247,7 @@ export default function SafetyScreen({ navigation }) {
               <View style={styles.tipIconContainer}>
                 <Ionicons name={item.icon} size={20} color="#1E2B4D" />
               </View>
-              <Text style={styles.tipText}>{item.tip}</Text>
+              <Text style={styles.tipText}>{t(`safety.tip${item.id}`)}</Text>
             </View>
           ))}
         </View>
@@ -260,9 +260,9 @@ export default function SafetyScreen({ navigation }) {
             color="#C62828"
           />
           <View style={styles.emergencyContent}>
-            <Text style={styles.emergencyTitle}>Emergency Helpline</Text>
+            <Text style={styles.emergencyTitle}>{t("safety.emergencyTitle")}</Text>
             <Text style={styles.emergencySubtitle}>
-              In case of emergency, call
+              {t("safety.emergencySub")}
             </Text>
           </View>
           <TouchableOpacity style={styles.emergencyButton}>
@@ -300,9 +300,9 @@ export default function SafetyScreen({ navigation }) {
                 <Ionicons name="close" size={24} color="#1E2B4D" />
               </TouchableOpacity>
             </View>
-            <Text style={styles.modalTitle}>{selectedFeature?.title}</Text>
+            <Text style={styles.modalTitle}>{selectedFeature ? t(`safety.feature${selectedFeature.id}Title`) : ""}</Text>
             <Text style={styles.modalSubtitle}>
-              {selectedFeature?.subtitle}
+              {selectedFeature ? t(`safety.feature${selectedFeature.id}Sub`) : ""}
             </Text>
             <View style={styles.modalDivider} />
             <Text style={styles.modalDescription}>
@@ -315,7 +315,7 @@ export default function SafetyScreen({ navigation }) {
               ]}
               onPress={() => setSelectedFeature(null)}
             >
-              <Text style={styles.modalButtonText}>Got it</Text>
+              <Text style={styles.modalButtonText}>{t("safety.gotIt")}</Text>
             </TouchableOpacity>
           </View>
         </View>
@@ -331,7 +331,7 @@ export default function SafetyScreen({ navigation }) {
         <View style={styles.modalOverlay}>
           <View style={styles.modalContent}>
             <View style={styles.modalHeader}>
-              <Text style={styles.contactModalTitle}>Trusted Contacts</Text>
+              <Text style={styles.contactModalTitle}>{t("safety.trustedModalTitle")}</Text>
               <TouchableOpacity onPress={() => setShowContactModal(false)}>
                 <Ionicons name="close" size={24} color="#1E2B4D" />
               </TouchableOpacity>
@@ -354,7 +354,7 @@ export default function SafetyScreen({ navigation }) {
 
             <TouchableOpacity style={styles.addContactButton}>
               <Ionicons name="add-circle-outline" size={22} color="#1A73E8" />
-              <Text style={styles.addContactText}>Add new contact</Text>
+              <Text style={styles.addContactText}>{t("safety.addContact")}</Text>
             </TouchableOpacity>
           </View>
         </View>

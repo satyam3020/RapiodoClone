@@ -38,7 +38,7 @@ export default function DriverServiceManagerScreen({ navigation }) {
             {/* Placeholder for small avatar image */}
             <MaterialIcons name="local-taxi" size={30} color="#1A73E8" />
           </View>
-          <Text style={styles.serviceName}>Auto</Text>
+          <Text style={styles.serviceName}>{t("driverServiceManager.auto")}</Text>
           <View style={styles.activeTag}>
             <Ionicons
               name="checkmark-circle"
@@ -55,7 +55,7 @@ export default function DriverServiceManagerScreen({ navigation }) {
           <View style={[styles.avatarCircle, { backgroundColor: "#FFECB3" }]}>
             <Ionicons name="cube-outline" size={30} color="#FF8F00" />
           </View>
-          <Text style={styles.serviceName}>Auto Parcel</Text>
+          <Text style={styles.serviceName}>{t("driverServiceManager.autoParcel")}</Text>
           <View style={styles.activeTag}>
             <Ionicons
               name="checkmark-circle"
