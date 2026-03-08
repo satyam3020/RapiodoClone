@@ -756,7 +756,7 @@ export default function DriverDashboardScreen({ navigation }) {
           <TouchableOpacity onPress={() => setIsGemsModalOpen(false)}>
             <Ionicons name="arrow-back" size={28} color="black" />
           </TouchableOpacity>
-          <Text style={styles.gemsTitle}>जेम रिवार्ड्स</Text>
+          <Text style={styles.gemsTitle}>{t("driverDash.gemsTitle")}</Text>
         </View>
 
         <ScrollView contentContainerStyle={styles.gemsScroll}>
@@ -764,23 +764,23 @@ export default function DriverDashboardScreen({ navigation }) {
             <Ionicons name="diamond" size={60} color="#2962FF" />
             <Text style={styles.gemsBalanceLabel}>0</Text>
           </View>
-          <Text style={styles.gemsSubLabel}>टोटल इकट्ठे किये हुए जेम्स</Text>
+          <Text style={styles.gemsSubLabel}>{t("driverDash.gemsSubLabel")}</Text>
 
           <View style={styles.dividerFull} />
 
-          <Text style={styles.gemsSectionTitle}>कैश रिवार्ड्स रिडीम करें</Text>
+          <Text style={styles.gemsSectionTitle}>{t("driverDash.redeemCash")}</Text>
 
           <View style={styles.gemsGrid}>
             {/* Card ₹20 */}
             <View style={[styles.gemCard, { backgroundColor: "#E6EE9C" }]}>
-              <Text style={styles.gemCardTopText}>कैश पाएं</Text>
+              <Text style={styles.gemCardTopText}>{t("driverDash.getCash")}</Text>
               <Text style={styles.gemCardAmount}>₹20</Text>
               <View style={styles.gemLockCircle}>
                 <Ionicons name="lock-closed" size={24} color="white" />
               </View>
               <View style={styles.gemCostPill}>
                 <Ionicons name="diamond" size={14} color="#E0E0E0" />
-                <Text style={styles.gemCostText}>2 जेम्स</Text>
+                <Text style={styles.gemCostText}>{t("driverDash.n_gems").replace("{n}", "2")}</Text>
                 <Ionicons
                   name="arrow-forward"
                   size={14}
@@ -792,14 +792,14 @@ export default function DriverDashboardScreen({ navigation }) {
 
             {/* Card ₹50 */}
             <View style={[styles.gemCard, { backgroundColor: "#B2DFDB" }]}>
-              <Text style={styles.gemCardTopText}>कैश पाएं</Text>
+              <Text style={styles.gemCardTopText}>{t("driverDash.getCash")}</Text>
               <Text style={styles.gemCardAmount}>₹50</Text>
               <View style={styles.gemLockCircle}>
                 <Ionicons name="lock-closed" size={24} color="white" />
               </View>
               <View style={styles.gemCostPill}>
                 <Ionicons name="diamond" size={14} color="#E0E0E0" />
-                <Text style={styles.gemCostText}>5 जेम्स</Text>
+                <Text style={styles.gemCostText}>{t("driverDash.n_gems").replace("{n}", "5")}</Text>
                 <Ionicons
                   name="arrow-forward"
                   size={14}
@@ -811,14 +811,14 @@ export default function DriverDashboardScreen({ navigation }) {
 
             {/* Card ₹100 */}
             <View style={[styles.gemCard, { backgroundColor: "#C5CAE9" }]}>
-              <Text style={styles.gemCardTopText}>कैश पाएं</Text>
+              <Text style={styles.gemCardTopText}>{t("driverDash.getCash")}</Text>
               <Text style={styles.gemCardAmount}>₹100</Text>
               <View style={styles.gemLockCircle}>
                 <Ionicons name="lock-closed" size={24} color="white" />
               </View>
               <View style={styles.gemCostPill}>
                 <Ionicons name="diamond" size={14} color="#E0E0E0" />
-                <Text style={styles.gemCostText}>10 जेम्स</Text>
+                <Text style={styles.gemCostText}>{t("driverDash.n_gems").replace("{n}", "10")}</Text>
                 <Ionicons
                   name="arrow-forward"
                   size={14}
@@ -830,14 +830,14 @@ export default function DriverDashboardScreen({ navigation }) {
 
             {/* Card ₹200 */}
             <View style={[styles.gemCard, { backgroundColor: "#FFCCBC" }]}>
-              <Text style={styles.gemCardTopText}>कैश पाएं</Text>
+              <Text style={styles.gemCardTopText}>{t("driverDash.getCash")}</Text>
               <Text style={styles.gemCardAmount}>₹200</Text>
               <View style={styles.gemLockCircle}>
                 <Ionicons name="lock-closed" size={24} color="white" />
               </View>
               <View style={styles.gemCostPill}>
                 <Ionicons name="diamond" size={14} color="#E0E0E0" />
-                <Text style={styles.gemCostText}>20 जेम्स</Text>
+                <Text style={styles.gemCostText}>{t("driverDash.n_gems").replace("{n}", "20")}</Text>
                 <Ionicons
                   name="arrow-forward"
                   size={14}

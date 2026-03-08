@@ -170,6 +170,111 @@ export const translations = {
         'generic.on': 'ON',
         'generic.off': 'OFF',
         'generic.bookNow': 'Book Now',
+        // Driver Earnings & Wallets
+        'driverEarnings.title': 'Earnings',
+        'driverEarnings.walletTab': 'Wallet',
+        'driverEarnings.allEarningsTab': 'All Earnings',
+        'driverEarnings.walletBalance': 'Your Wallet Balance',
+        'driverEarnings.moneyTransfer': 'Money Transfer',
+        'driverEarnings.transferLeft': 'You have 7 transfers left',
+        'driverEarnings.renewalText': 'Money transfer renews every Monday!',
+        'driverEarnings.knowMore': 'Know more',
+        'driverEarnings.referEarn': 'Refer and Earn',
+        'driverEarnings.upTo': 'Up to ₹6500',
+        'driverEarnings.recentTx': 'Recent Transactions',
+        'driverEarnings.filter': 'Filter',
+        'driverEarnings.allTx': 'All Transactions',
+        'driverEarnings.pending': 'Pending',
+        'driverEarnings.todayEarnings': 'Today\'s Earnings',
+        'driverEarnings.allOrders': 'All Orders',
+        'driverEarnings.oldOrders': 'Old orders and order earnings',
+        'driverEarnings.lastOrderEarnings': 'Last order earnings',
+        'driverEarnings.viewRateCard': 'View Rate Card',
+        'driverEarnings.knowAboutEarnings': 'Know everything about your earnings',
+
+        // Driver Access Fee
+        'driverAccess.title': 'Access Fee',
+        'driverAccess.help': 'Help',
+        'driverAccess.payOnlyWhen': 'Pay only when\nyou ride.',
+        'driverAccess.planTitle': 'Access Fee Plan',
+        'driverAccess.perDay': 'per day',
+        'driverAccess.rides_1_4': '1-4 rides',
+        'driverAccess.rides_5_plus': '5+ rides',
+
+        // Driver Rewards
+        'driverRewards.title': 'VahaniQ Rewards',
+        'driverRewards.help': 'Help',
+        'driverRewards.healthInsurance': 'Health Insurance',
+        'driverRewards.healthSub': 'For you and your family',
+        'driverRewards.accidentalInsurance': 'Accidental Insurance',
+        'driverRewards.accidentalSub': 'Stay protected on ride',
+        'driverRewards.medicineDiscount': 'Medicine Discount',
+        'driverRewards.medicineSub': 'Upto 10% discount on medicines at Apollo medicals',
+        'driverRewards.knowMore': 'Know More',
+
+        // Driver Help
+        'driverHelp.title': 'Help',
+        'driverHelp.placeholder': 'Search your queries',
+        'driverHelp.start': 'Getting Started',
+        'driverHelp.demandLoc': 'Nearby Demand Locations',
+        'driverHelp.earnings': 'Earnings',
+        'driverHelp.moneyTransfer': 'Money Transfer',
+        'driverHelp.accountManager': 'Account & Service Management',
+        'driverHelp.appIssues': 'App Issues',
+        'driverHelp.emergency': 'Emergency',
+
+        // User Help
+        'userHelp.title': 'Help',
+        'userHelp.tickets': 'Tickets',
+        'userHelp.yourLastRide': 'Your last ride',
+        'userHelp.completed': 'Completed',
+        'userHelp.fullRideHistory': 'Full Ride history',
+        'userHelp.helpTopics': 'Help topics',
+        'userHelp.searchPlaceholder': 'Search Help Topics',
+        'userHelp.noResults': 'No matching topics found',
+        'userHelp.wasHelpful': 'Was this helpful?',
+        'userHelp.yes': 'Yes',
+        'userHelp.no': 'No',
+        'userHelp.stillNeedHelp': 'Still need help?',
+        'userHelp.chatWithSupport': 'Chat with Support',
+        'userHelp.myTickets': 'My Tickets',
+        'userHelp.noTickets': 'No tickets yet',
+        'userHelp.topic_fare': 'Ride fare related Issues',
+        'userHelp.topic_captain': 'Captain and Vehicle related issues',
+        'userHelp.topic_other': 'Other Topics',
+
+        // Driver Service Manager
+        'driverServiceManager.title': 'Service Manager',
+        'driverServiceManager.help': 'Help',
+        'driverServiceManager.active': 'Active',
+        'driverServiceManager.autoBoost': 'Auto Boost',
+        'driverServiceManager.start': 'Start',
+
+        // Driver Miles Bonus
+        'driverMilesBonus.title': 'Miles Bonus',
+        'driverMilesBonus.help': 'Help',
+        'driverMilesBonus.daily': 'Daily',
+        'driverMilesBonus.weekly': 'Weekly',
+        'driverMilesBonus.bonus': 'Bonus',
+        'driverMilesBonus.notCreated': 'Miles Bonus has not been created yet. Come back later',
+
+        // Driver Help Leftovers
+        'driverHelp.rideHelp': 'Need help with a ride?',
+        'driverHelp.viewAllRides': 'View All Rides',
+        'driverHelp.generalTopics': 'General Topics',
+        'driverHelp.contactSupport': 'Contact Support Team',
+
+        // Driver Dashboard Gems
+        'driverDash.gemsTitle': 'Gem Rewards',
+        'driverDash.gemsSubLabel': 'Total Gems Collected',
+        'driverDash.redeemCash': 'Redeem Cash Rewards',
+        'driverDash.getCash': 'Get Cash',
+        'driverDash.n_gems': '{n} Gems',
+
+        // Generic Dates
+        'generic.march': 'March',
+        'generic.today': 'Today',
+
         'generic.loading': 'Please Wait, getting your location',
     },
 
@@ -344,6 +449,111 @@ export const translations = {
         'generic.on': 'ON',
         'generic.off': 'OFF',
         'generic.bookNow': 'अभी बुक करें',
+        // Driver Earnings & Wallets
+        'driverEarnings.title': 'कमाई',
+        'driverEarnings.walletTab': 'वॉलेट',
+        'driverEarnings.allEarningsTab': 'सारी कमाई',
+        'driverEarnings.walletBalance': 'आपका वॉलेट बैलेंस',
+        'driverEarnings.moneyTransfer': 'मनी ट्रांसफर',
+        'driverEarnings.transferLeft': 'आपके पास 7 ट्रांसफर बाकी हैं',
+        'driverEarnings.renewalText': 'मनी ट्रांसफर हर सोमवार को रिन्यू होता है!',
+        'driverEarnings.knowMore': 'और जानो',
+        'driverEarnings.referEarn': 'रेफर करें और कमाएँ',
+        'driverEarnings.upTo': '₹6500 तक',
+        'driverEarnings.recentTx': 'पिछले ट्रांजेक्शन',
+        'driverEarnings.filter': 'फ़िल्टर',
+        'driverEarnings.allTx': 'सभी ट्रांजेक्शन',
+        'driverEarnings.pending': 'विचाराधीन',
+        'driverEarnings.todayEarnings': 'आज की कमाई',
+        'driverEarnings.allOrders': 'सभी ऑर्डर',
+        'driverEarnings.oldOrders': 'पुराने ऑर्डर और ऑर्डर अर्निंग',
+        'driverEarnings.lastOrderEarnings': 'पिछले ऑर्डर की कमाई',
+        'driverEarnings.viewRateCard': 'रेट कार्ड देखें',
+        'driverEarnings.knowAboutEarnings': 'अपनी कमाई के बारे में सब जानें',
+
+        // Driver Access Fee
+        'driverAccess.title': 'एक्सेस फी',
+        'driverAccess.help': 'हेल्प',
+        'driverAccess.payOnlyWhen': 'केवल तभी पेमेंट करें\nजब आप राइड करते हैं।',
+        'driverAccess.planTitle': 'एक्सेस फी प्लान',
+        'driverAccess.perDay': 'प्रति दिन',
+        'driverAccess.rides_1_4': '1-4 राइड',
+        'driverAccess.rides_5_plus': '5+ राइड',
+
+        // Driver Rewards
+        'driverRewards.title': 'VahaniQ रिवॉर्ड्स',
+        'driverRewards.help': 'मदद',
+        'driverRewards.healthInsurance': 'स्वास्थ्य बीमा',
+        'driverRewards.healthSub': 'आपके और आपके परिवार के लिए',
+        'driverRewards.accidentalInsurance': 'दुर्घटना बीमा',
+        'driverRewards.accidentalSub': 'राइड पर सुरक्षित रहें',
+        'driverRewards.medicineDiscount': 'दवाओं पर छूट',
+        'driverRewards.medicineSub': 'अपोलो मेडिकल्स में दवाओं पर 10% तक की छूट',
+        'driverRewards.knowMore': 'और जानें',
+
+        // Driver Help
+        'driverHelp.title': 'सहायता',
+        'driverHelp.placeholder': 'अपने प्रश्नों को खोजें',
+        'driverHelp.start': 'शुरू करना',
+        'driverHelp.demandLoc': 'आसपास की डिमांड लोकेशन',
+        'driverHelp.earnings': 'अर्निंग',
+        'driverHelp.moneyTransfer': 'मनी ट्रांसफर',
+        'driverHelp.accountManager': 'खाता और सर्विस मैनेजमेंट',
+        'driverHelp.appIssues': 'ऐप की समस्याएँ',
+        'driverHelp.emergency': 'आपात-स्थिति',
+
+        // User Help
+        'userHelp.title': 'सहायता',
+        'userHelp.tickets': 'टिकट',
+        'userHelp.yourLastRide': 'आपकी पिछली राइड',
+        'userHelp.completed': 'पूरी हुई',
+        'userHelp.fullRideHistory': 'पूरी राइड हिस्ट्री',
+        'userHelp.helpTopics': 'सहायता विषय',
+        'userHelp.searchPlaceholder': 'सहायता विषय खोजें',
+        'userHelp.noResults': 'कोई विषय नहीं मिला',
+        'userHelp.wasHelpful': 'क्या यह उपयोगी था?',
+        'userHelp.yes': 'हाँ',
+        'userHelp.no': 'नहीं',
+        'userHelp.stillNeedHelp': 'क्या अभी भी मदद चाहिए?',
+        'userHelp.chatWithSupport': 'सपोर्ट से चैट करें',
+        'userHelp.myTickets': 'मेरे टिकट',
+        'userHelp.noTickets': 'अभी कोई टिकट नहीं',
+        'userHelp.topic_fare': 'राइड किराये से संबंधित विषय',
+        'userHelp.topic_captain': 'कैप्टन और वाहन से संबंधित विषय',
+        'userHelp.topic_other': 'अन्य विषय',
+
+        // Driver Service Manager
+        'driverServiceManager.title': 'सर्विस मैनेजर',
+        'driverServiceManager.help': 'हेल्प',
+        'driverServiceManager.active': 'ऐक्टिव',
+        'driverServiceManager.autoBoost': 'ऑटो बूस्ट',
+        'driverServiceManager.start': 'शुरू करें',
+
+        // Driver Miles Bonus
+        'driverMilesBonus.title': 'माइल्स बोनस',
+        'driverMilesBonus.help': 'हेल्प',
+        'driverMilesBonus.daily': 'रोज़',
+        'driverMilesBonus.weekly': 'साप्ताहिक',
+        'driverMilesBonus.bonus': 'बोनस',
+        'driverMilesBonus.notCreated': 'माइल्स बोनस अभी तक नहीं बनाया गया है। बाद में आइए',
+
+        // Driver Help Leftovers
+        'driverHelp.rideHelp': 'राइड के लिए मदद चाहिए?',
+        'driverHelp.viewAllRides': 'सभी राइड देखें',
+        'driverHelp.generalTopics': 'सामान्य विषय',
+        'driverHelp.contactSupport': 'सहयोग टीम से संपर्क करें',
+
+        // Driver Dashboard Gems
+        'driverDash.gemsTitle': 'जेम रिवार्ड्स',
+        'driverDash.gemsSubLabel': 'टोटल इकट्ठे किये हुए जेम्स',
+        'driverDash.redeemCash': 'कैश रिवार्ड्स रिडीम करें',
+        'driverDash.getCash': 'कैश पाएं',
+        'driverDash.n_gems': '{n} जेम्स',
+
+        // Generic Dates
+        'generic.march': 'मार्च',
+        'generic.today': 'आज',
+
         'generic.loading': 'कृपया प्रतीक्षा करें, आपकी लोकेशन ढूंढ रहे हैं',
     }
 };

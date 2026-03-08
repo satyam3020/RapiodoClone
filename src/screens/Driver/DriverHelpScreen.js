@@ -13,54 +13,57 @@ import {
   MaterialIcons,
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
+import { useContext } from "react";
+import { AppContext } from "../../context/AppContext";
 
 export default function DriverHelpScreen({ navigation }) {
+  const { t } = useContext(AppContext);
   const listItems = [
     {
       id: 1,
-      title: "शुरू करना",
+      title: t("driverHelp.start"),
       icon: "rocket",
       iconColor: "#FFA000",
       bgColor: "#FFF8E1",
     },
     {
       id: 2,
-      title: "आसपास की डिमांड लोकेशन",
+      title: t("driverHelp.demandLoc"),
       icon: "location",
       iconColor: "#D32F2F",
       bgColor: "#FFEBEE",
     },
     {
       id: 3,
-      title: "अर्निंग",
+      title: t("driverHelp.earnings"),
       icon: "cash",
       iconColor: "#388E3C",
       bgColor: "#E8F5E9",
     },
     {
       id: 4,
-      title: "मनी ट्रांसफर",
+      title: t("driverHelp.moneyTransfer"),
       icon: "wallet",
       iconColor: "#FBC02D",
       bgColor: "#FFFDE7",
     },
     {
       id: 5,
-      title: "खाता और सर्विस मैनेजमेंट",
+      title: t("driverHelp.accountManager"),
       icon: "person",
       iconColor: "#D32F2F",
       bgColor: "#FFF3E0",
     },
     {
       id: 6,
-      title: "ऐप की समस्याएँ",
+      title: t("driverHelp.appIssues"),
       icon: "phone-portrait",
       iconColor: "#424242",
       bgColor: "#F5F5F5",
     },
     {
       id: 7,
-      title: "आपात-स्थिति",
+      title: t("driverHelp.emergency"),
       icon: "warning",
       iconColor: "#D32F2F",
       bgColor: "#FFEBEE",
@@ -74,7 +77,7 @@ export default function DriverHelpScreen({ navigation }) {
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Ionicons name="arrow-back" size={28} color="black" />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>सहायता</Text>
+        <Text style={styles.headerTitle}>{t("driverHelp.title")}</Text>
       </View>
 
       <ScrollView
@@ -92,20 +95,20 @@ export default function DriverHelpScreen({ navigation }) {
           />
           <TextInput
             style={styles.searchInput}
-            placeholder="Search your queries"
+            placeholder={t("driverHelp.placeholder")}
             placeholderTextColor="#9E9E9E"
           />
         </View>
 
         {/* Ride Help Section */}
-        <Text style={styles.sectionTitle}>राइड के लिए मदद चाहिए?</Text>
+        <Text style={styles.sectionTitle}>{t("driverHelp.rideHelp")}</Text>
 
         <View style={styles.rideCard}>
           <View style={styles.rideCardHeader}>
-            <Text style={styles.rideType}>ऑटो</Text>
+            <Text style={styles.rideType}>{t("app.auto")}</Text>
             <Text style={styles.ridePrice}>₹232</Text>
           </View>
-          <Text style={styles.rideTime}>05 मार्च, 06:27 pm</Text>
+          <Text style={styles.rideTime}>05 {t("generic.march")}, 06:27 pm</Text>
 
           <View style={styles.divider} />
 
@@ -124,12 +127,12 @@ export default function DriverHelpScreen({ navigation }) {
         </View>
 
         <TouchableOpacity style={styles.viewAllRides}>
-          <Text style={styles.viewAllText}>सभी राइड देखें</Text>
+          <Text style={styles.viewAllText}>{t("driverHelp.viewAllRides")}</Text>
           <Ionicons name="chevron-forward" size={18} color="#757575" />
         </TouchableOpacity>
 
         {/* General Topics Section */}
-        <Text style={styles.sectionTitle}>सामान्य विषय</Text>
+        <Text style={styles.sectionTitle}>{t("driverHelp.generalTopics")}</Text>
 
         <View style={styles.topicsList}>
           {listItems.map((item) => (
@@ -145,7 +148,7 @@ export default function DriverHelpScreen({ navigation }) {
 
         {/* Contact Support Button */}
         <TouchableOpacity style={styles.supportButton}>
-          <Text style={styles.supportButtonText}>सहयोग टीम से संपर्क करें</Text>
+          <Text style={styles.supportButtonText}>{t("driverHelp.contactSupport")}</Text>
         </TouchableOpacity>
 
         {/* Training Videos Banner */}

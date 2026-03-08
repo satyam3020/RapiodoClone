@@ -12,6 +12,8 @@ import {
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import { useContext } from "react";
+import { AppContext } from "../../context/AppContext";
 
 // Help topic categories with sub-topics
 const HELP_TOPICS = [
@@ -153,6 +155,7 @@ const MOCK_TICKETS = [
 ];
 
 export default function HelpScreen({ navigation }) {
+  const { t } = useContext(AppContext);
   const [searchQuery, setSearchQuery] = useState("");
   const [expandedTopic, setExpandedTopic] = useState(null);
   const [expandedSubTopic, setExpandedSubTopic] = useState(null);
@@ -161,11 +164,11 @@ export default function HelpScreen({ navigation }) {
   // Filter help topics based on search
   const filteredTopics = searchQuery.trim()
     ? HELP_TOPICS.map((topic) => ({
-        ...topic,
-        subTopics: topic.subTopics.filter((sub) =>
-          sub.title.toLowerCase().includes(searchQuery.toLowerCase()),
-        ),
-      })).filter((topic) => topic.subTopics.length > 0)
+      ...topic,
+      subTopics: topic.subTopics.filter((sub) =>
+        sub.title.toLowerCase().includes(searchQuery.toLowerCase()),
+      ),
+    })).filter((topic) => topic.subTopics.length > 0)
     : HELP_TOPICS;
 
   const toggleTopic = (topicId) => {
@@ -187,13 +190,13 @@ export default function HelpScreen({ navigation }) {
         >
           <Ionicons name="arrow-back" size={24} color="#1E2B4D" />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>Help</Text>
+        <Text style={styles.headerTitle}>{t("userHelp.title")}</Text>
         <TouchableOpacity
           style={styles.ticketsButton}
           onPress={() => setShowTickets(true)}
         >
           <Ionicons name="receipt-outline" size={18} color="#1E2B4D" />
-          <Text style={styles.ticketsButtonText}>Tickets</Text>
+          <Text style={styles.ticketsButtonText}>{t("userHelp.tickets")}</Text>
         </TouchableOpacity>
       </View>
 
@@ -202,7 +205,7 @@ export default function HelpScreen({ navigation }) {
         showsVerticalScrollIndicator={false}
       >
         {/* Your Last Ride */}
-        <Text style={styles.sectionLabel}>Your last ride</Text>
+        <Text style={styles.sectionLabel}>{t("userHelp.yourLastRide")}</Text>
         <View style={styles.lastRideCard}>
           <TouchableOpacity style={styles.lastRideRow}>
             <MaterialCommunityIcons
@@ -218,7 +221,7 @@ export default function HelpScreen({ navigation }) {
               <Text style={styles.lastRideSubtitle}>
                 05 Mar 2026 • 08:56 AM
               </Text>
-              <Text style={styles.lastRideFare}>Rs.41 • Completed</Text>
+              <Text style={styles.lastRideFare}>Rs.41 • {t("userHelp.completed")}</Text>
             </View>
           </TouchableOpacity>
 
@@ -229,20 +232,20 @@ export default function HelpScreen({ navigation }) {
             onPress={() => navigation.navigate("MyRides")}
           >
             <Ionicons name="time-outline" size={20} color="#1E2B4D" />
-            <Text style={styles.rideHistoryText}>Full Ride history</Text>
+            <Text style={styles.rideHistoryText}>{t("userHelp.fullRideHistory")}</Text>
             <Ionicons name="chevron-forward" size={18} color="#1E2B4D" />
           </TouchableOpacity>
         </View>
 
         {/* Help Topics */}
-        <Text style={styles.sectionLabel}>Help topics</Text>
+        <Text style={styles.sectionLabel}>{t("userHelp.helpTopics")}</Text>
         <View style={styles.helpTopicsContainer}>
           {/* Search Box */}
           <View style={styles.searchContainer}>
             <Ionicons name="search" size={20} color="#9E9E9E" />
             <TextInput
               style={styles.searchInput}
-              placeholder="Search Help Topics"
+              placeholder={t("userHelp.searchPlaceholder")}
               placeholderTextColor="#9E9E9E"
               value={searchQuery}
               onChangeText={setSearchQuery}
@@ -258,7 +261,7 @@ export default function HelpScreen({ navigation }) {
           {filteredTopics.length === 0 ? (
             <View style={styles.noResults}>
               <Ionicons name="search-outline" size={40} color="#E0E0E0" />
-              <Text style={styles.noResultsText}>No matching topics found</Text>
+              <Text style={styles.noResultsText}>{t("userHelp.noResults")}</Text>
             </View>
           ) : (
             filteredTopics.map((topic) => (
@@ -320,7 +323,7 @@ export default function HelpScreen({ navigation }) {
                             <Text style={styles.answerText}>{sub.answer}</Text>
                             <View style={styles.answerActions}>
                               <Text style={styles.helpfulText}>
-                                Was this helpful?
+                                {t("userHelp.wasHelpful")}
                               </Text>
                               <View style={styles.helpfulButtons}>
                                 <TouchableOpacity style={styles.helpfulBtn}>
@@ -335,7 +338,7 @@ export default function HelpScreen({ navigation }) {
                                       { color: "#4CAF50" },
                                     ]}
                                   >
-                                    Yes
+                                    {t("userHelp.yes")}
                                   </Text>
                                 </TouchableOpacity>
                                 <TouchableOpacity style={styles.helpfulBtn}>
@@ -350,7 +353,7 @@ export default function HelpScreen({ navigation }) {
                                       { color: "#F44336" },
                                     ]}
                                   >
-                                    No
+                                    {t("userHelp.no")}
                                   </Text>
                                 </TouchableOpacity>
                               </View>
@@ -368,10 +371,10 @@ export default function HelpScreen({ navigation }) {
 
         {/* Contact Support */}
         <View style={styles.contactContainer}>
-          <Text style={styles.contactTitle}>Still need help?</Text>
+          <Text style={styles.contactTitle}>{t("userHelp.stillNeedHelp")}</Text>
           <TouchableOpacity style={styles.contactButton}>
             <Ionicons name="chatbubbles-outline" size={20} color="#FFF" />
-            <Text style={styles.contactButtonText}>Chat with Support</Text>
+            <Text style={styles.contactButtonText}>{t("userHelp.chatWithSupport")}</Text>
           </TouchableOpacity>
         </View>
 
@@ -388,7 +391,7 @@ export default function HelpScreen({ navigation }) {
         <View style={styles.modalOverlay}>
           <View style={styles.modalContent}>
             <View style={styles.modalHeader}>
-              <Text style={styles.modalTitle}>My Tickets</Text>
+              <Text style={styles.modalTitle}>{t("userHelp.myTickets")}</Text>
               <TouchableOpacity onPress={() => setShowTickets(false)}>
                 <Ionicons name="close" size={24} color="#1E2B4D" />
               </TouchableOpacity>
@@ -398,7 +401,7 @@ export default function HelpScreen({ navigation }) {
               {MOCK_TICKETS.length === 0 ? (
                 <View style={styles.noTickets}>
                   <Ionicons name="receipt-outline" size={50} color="#E0E0E0" />
-                  <Text style={styles.noTicketsText}>No tickets yet</Text>
+                  <Text style={styles.noTicketsText}>{t("userHelp.noTickets")}</Text>
                 </View>
               ) : (
                 MOCK_TICKETS.map((ticket) => (

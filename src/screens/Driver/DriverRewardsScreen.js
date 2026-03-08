@@ -10,8 +10,11 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { Colors } from "../../constants/Colors";
+import { useContext } from "react";
+import { AppContext } from "../../context/AppContext";
 
 export default function DriverRewardsScreen({ navigation }) {
+  const { t } = useContext(AppContext);
   const RewardCard = ({
     title,
     subtitle,
@@ -45,10 +48,10 @@ export default function DriverRewardsScreen({ navigation }) {
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Ionicons name="arrow-back" size={28} color="black" />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>VahaniQ Rewards</Text>
+        <Text style={styles.headerTitle}>{t("driverRewards.title")}</Text>
         <TouchableOpacity style={styles.helpButton}>
           <Ionicons name="headset" size={16} color="black" />
-          <Text style={styles.helpText}>Help</Text>
+          <Text style={styles.helpText}>{t("driverRewards.help")}</Text>
         </TouchableOpacity>
       </View>
 
@@ -57,24 +60,27 @@ export default function DriverRewardsScreen({ navigation }) {
         showsVerticalScrollIndicator={false}
       >
         <RewardCard
-          title="Health Insurance"
-          subtitle="For you and your family"
+          title={t("driverRewards.healthInsurance")}
+          subtitle={t("driverRewards.healthSub")}
           bgBottom="#E8F5E9" // Light Green
           image={<Ionicons name="medkit" size={80} color="#4CAF50" />}
+          buttonText={t("driverRewards.knowMore")}
         />
 
         <RewardCard
-          title="Accidental Insurance"
-          subtitle="Stay protected on ride"
+          title={t("driverRewards.accidentalInsurance")}
+          subtitle={t("driverRewards.accidentalSub")}
           bgBottom="#FFF8E1" // Light Yellow
           image={<Ionicons name="bicycle" size={80} color="#FFC107" />}
+          buttonText={t("driverRewards.knowMore")}
         />
 
         <RewardCard
-          title="Medicine Discount"
-          subtitle="Upto 10% discount on medicines at Apollo medicals"
+          title={t("driverRewards.medicineDiscount")}
+          subtitle={t("driverRewards.medicineSub")}
           bgBottom="#F3E5F5" // Light Purple
           image={<Ionicons name="bandage" size={80} color="#9C27B0" />}
+          buttonText={t("driverRewards.knowMore")}
         />
       </ScrollView>
     </SafeAreaView>

@@ -8,17 +8,20 @@ import {
   ScrollView,
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { useContext } from "react";
+import { AppContext } from "../../context/AppContext";
 
 export default function DriverMilesBonusScreen({ navigation }) {
+  const { t } = useContext(AppContext);
   const [activeTab, setActiveTab] = useState("daily");
 
   const renderDays = () => {
     const days = [
-      { date: "3", label: "मार्च" },
-      { date: "4", label: "मार्च" },
-      { date: "5", label: "मार्च" },
-      { date: "6", label: "आज", active: true },
-      { date: "7", label: "मार्च" },
+      { date: "3", label: t("generic.march") },
+      { date: "4", label: t("generic.march") },
+      { date: "5", label: t("generic.march") },
+      { date: "6", label: t("generic.today"), active: true },
+      { date: "7", label: t("generic.march") },
     ];
 
     return (
@@ -47,10 +50,10 @@ export default function DriverMilesBonusScreen({ navigation }) {
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Ionicons name="arrow-back" size={28} color="black" />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>माइल्स बोनस</Text>
+        <Text style={styles.headerTitle}>{t("driverMilesBonus.title")}</Text>
         <TouchableOpacity style={styles.helpButton}>
           <Ionicons name="headset" size={16} color="black" />
-          <Text style={styles.helpText}>हेल्प</Text>
+          <Text style={styles.helpText}>{t("driverMilesBonus.help")}</Text>
         </TouchableOpacity>
       </View>
 
@@ -67,7 +70,7 @@ export default function DriverMilesBonusScreen({ navigation }) {
                 activeTab === "daily" && styles.activeTabText,
               ]}
             >
-              रोज़
+              {t("driverMilesBonus.daily")}
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -80,7 +83,7 @@ export default function DriverMilesBonusScreen({ navigation }) {
                 activeTab === "weekly" && styles.activeTabText,
               ]}
             >
-              साप्ताहिक
+              {t("driverMilesBonus.weekly")}
             </Text>
           </TouchableOpacity>
           <TouchableOpacity
@@ -93,7 +96,7 @@ export default function DriverMilesBonusScreen({ navigation }) {
                 activeTab === "bonus" && styles.activeTabText,
               ]}
             >
-              बोनस
+              {t("driverMilesBonus.bonus")}
             </Text>
           </TouchableOpacity>
         </View>
@@ -116,7 +119,7 @@ export default function DriverMilesBonusScreen({ navigation }) {
             </View>
           </View>
           <Text style={styles.emptyText}>
-            माइल्स बोनस अभी तक नहीं बनाया गया है। बाद में आइए
+            {t("driverMilesBonus.notCreated")}
           </Text>
         </View>
       </View>

@@ -1,5 +1,5 @@
 import { SafeAreaView } from "react-native-safe-area-context";
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import {
   View,
   Text,
@@ -14,17 +14,19 @@ import {
   MaterialCommunityIcons,
 } from "@expo/vector-icons";
 import { Colors } from "../../constants/Colors";
+import { AppContext } from "../../context/AppContext";
 
 const { width } = Dimensions.get("window");
 
 export default function DriverEarningsScreen({ navigation }) {
+  const { t } = useContext(AppContext);
   const [activeTab, setActiveTab] = useState("wallet"); // 'all' or 'wallet'
 
   const renderWalletTab = () => (
     <ScrollView style={styles.tabContent} showsVerticalScrollIndicator={false}>
       {/* Balance Card */}
       <View style={styles.balanceCard}>
-        <Text style={styles.balanceLabel}>आपका वॉलेट बैलेंस</Text>
+        <Text style={styles.balanceLabel}>{t("driverEarnings.walletBalance")}</Text>
         <Text style={styles.balanceAmount}>₹39.18</Text>
         <TouchableOpacity style={styles.transferButton}>
           <MaterialCommunityIcons
@@ -33,22 +35,22 @@ export default function DriverEarningsScreen({ navigation }) {
             color="black"
             style={{ marginRight: 8 }}
           />
-          <Text style={styles.transferButtonText}>मनी ट्रांसफर</Text>
+          <Text style={styles.transferButtonText}>{t("driverEarnings.moneyTransfer")}</Text>
         </TouchableOpacity>
         <Text style={styles.transferLimitText}>
-          आपके पास 7 ट्रांसफर बाकी हैं
+          {t("driverEarnings.transferLeft")}
         </Text>
         <Text style={styles.renewalText}>
-          मनी ट्रांसफर हर सोमवार को रिन्यू होता है!{" "}
-          <Text style={styles.linkText}>और जानो</Text>
+          {t("driverEarnings.renewalText")}{" "}
+          <Text style={styles.linkText}>{t("driverEarnings.knowMore")}</Text>
         </Text>
       </View>
 
       {/* Refer Banner */}
       <View style={styles.referBanner}>
         <View style={styles.referTextCol}>
-          <Text style={styles.referTitle}>रेफर करें और कमाएँ</Text>
-          <Text style={styles.referAmount}>₹6500 तक</Text>
+          <Text style={styles.referTitle}>{t("driverEarnings.referEarn")}</Text>
+          <Text style={styles.referAmount}>{t("driverEarnings.upTo")}</Text>
         </View>
         <View style={styles.referImagePlaceholder}>
           {/* Simulating the money stack image */}
@@ -66,23 +68,23 @@ export default function DriverEarningsScreen({ navigation }) {
 
       {/* Transactions Section */}
       <View style={styles.transactionsHeader}>
-        <Text style={styles.transactionsTitle}>पिछले ट्रांजेक्शन</Text>
+        <Text style={styles.transactionsTitle}>{t("driverEarnings.recentTx")}</Text>
         <TouchableOpacity>
-          <Text style={styles.filterText}>फ़िल्टर</Text>
+          <Text style={styles.filterText}>{t("driverEarnings.filter")}</Text>
         </TouchableOpacity>
       </View>
 
       <View style={styles.transactionTabs}>
         <TouchableOpacity style={styles.txTabActive}>
-          <Text style={styles.txTabActiveText}>सभी ट्रांजेक्शन</Text>
+          <Text style={styles.txTabActiveText}>{t("driverEarnings.allTx")}</Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.txTabInactive}>
-          <Text style={styles.txTabInactiveText}>विचाराधीन</Text>
+          <Text style={styles.txTabInactiveText}>{t("driverEarnings.pending")}</Text>
         </TouchableOpacity>
       </View>
 
       {/* Transaction List */}
-      <Text style={styles.dateHeader}>03 मार्च 2026</Text>
+      <Text style={styles.dateHeader}>03 {t("generic.march")} 2026</Text>
       <View style={styles.transactionCard}>
         <View style={styles.txIconBox}>
           <Text style={styles.rupeeSymbol}>₹</Text>
@@ -94,7 +96,7 @@ export default function DriverEarningsScreen({ navigation }) {
         <Text style={styles.txAmount}>- ₹19</Text>
       </View>
 
-      <Text style={styles.dateHeader}>02 मार्च 2026</Text>
+      <Text style={styles.dateHeader}>02 {t("generic.march")} 2026</Text>
       <View style={styles.transactionCard}>
         <View style={styles.txIconBox}>
           <Text style={styles.rupeeSymbol}>₹</Text>
@@ -112,7 +114,7 @@ export default function DriverEarningsScreen({ navigation }) {
     <ScrollView style={styles.tabContent} showsVerticalScrollIndicator={false}>
       {/* Today's Earning Box */}
       <View style={styles.allEarningsCard}>
-        <Text style={styles.allEarningsLabel}>आज की कमाई</Text>
+        <Text style={styles.allEarningsLabel}>{t("driverEarnings.todayEarnings")}</Text>
         <Text style={styles.allEarningsAmount}>₹0</Text>
 
         <View style={styles.divider} />
@@ -122,9 +124,9 @@ export default function DriverEarningsScreen({ navigation }) {
             <Ionicons name="receipt-outline" size={20} color="#1A73E8" />
           </View>
           <View style={styles.menuItemTextCol}>
-            <Text style={styles.menuItemTitle}>सभी ऑर्डर</Text>
+            <Text style={styles.menuItemTitle}>{t("driverEarnings.allOrders")}</Text>
             <Text style={styles.menuItemSub}>
-              पुराने ऑर्डर और ऑर्डर अर्निंग
+              {t("driverEarnings.oldOrders")}
             </Text>
           </View>
           <Ionicons name="chevron-forward" size={20} color="#9E9E9E" />
@@ -137,7 +139,7 @@ export default function DriverEarningsScreen({ navigation }) {
             <Ionicons name="time-outline" size={20} color="#1A73E8" />
           </View>
           <View style={styles.menuItemTextCol}>
-            <Text style={styles.menuItemTitle}>पिछले ऑर्डर की कमाई</Text>
+            <Text style={styles.menuItemTitle}>{t("driverEarnings.lastOrderEarnings")}</Text>
             <Text style={styles.menuItemSub}>
               <Text style={{ color: "#4CAF50" }}>₹232</Text> • Auto • 05:36 PM
             </Text>
@@ -152,7 +154,7 @@ export default function DriverEarningsScreen({ navigation }) {
             <Ionicons name="card-outline" size={20} color="#1A73E8" />
           </View>
           <View style={styles.menuItemTextCol}>
-            <Text style={styles.menuItemTitle}>रेट कार्ड देखें</Text>
+            <Text style={styles.menuItemTitle}>{t("driverEarnings.viewRateCard")}</Text>
           </View>
           <Ionicons name="chevron-forward" size={20} color="#9E9E9E" />
         </TouchableOpacity>
@@ -160,7 +162,7 @@ export default function DriverEarningsScreen({ navigation }) {
 
       {/* YouTube Banner */}
       <View style={styles.ytBanner}>
-        <Text style={styles.ytBannerText}>अपनी कमाई के बारे में सब जानें</Text>
+        <Text style={styles.ytBannerText}>{t("driverEarnings.knowAboutEarnings")}</Text>
         <View style={styles.ytRightCol}>
           <Ionicons name="logo-youtube" size={32} color="#D32F2F" />
         </View>
@@ -175,10 +177,10 @@ export default function DriverEarningsScreen({ navigation }) {
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Ionicons name="arrow-back" size={28} color="black" />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>कमाई</Text>
+        <Text style={styles.headerTitle}>{t("driverEarnings.title")}</Text>
         <TouchableOpacity style={styles.helpButton}>
           <Ionicons name="headset" size={16} color="black" />
-          <Text style={styles.helpText}>हेल्प</Text>
+          <Text style={styles.helpText}>{t("driverAccess.help")}</Text>
         </TouchableOpacity>
       </View>
 
@@ -194,7 +196,7 @@ export default function DriverEarningsScreen({ navigation }) {
               activeTab === "all" && styles.activeTabText,
             ]}
           >
-            सारी कमाई
+            {t("driverEarnings.allEarningsTab")}
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
@@ -207,7 +209,7 @@ export default function DriverEarningsScreen({ navigation }) {
               activeTab === "wallet" && styles.activeTabText,
             ]}
           >
-            वॉलैट
+            {t("driverEarnings.walletTab")}
           </Text>
         </TouchableOpacity>
       </View>

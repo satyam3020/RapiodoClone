@@ -2,8 +2,11 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import React from "react";
 import { View, Text, StyleSheet, TouchableOpacity, Image } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
+import { useContext } from "react";
+import { AppContext } from "../../context/AppContext";
 
 export default function DriverAccessFeeScreen({ navigation }) {
+  const { t } = useContext(AppContext);
   return (
     <SafeAreaView style={styles.container}>
       {/* Header */}
@@ -11,10 +14,10 @@ export default function DriverAccessFeeScreen({ navigation }) {
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Ionicons name="arrow-back" size={28} color="black" />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>एक्सेस फी</Text>
+        <Text style={styles.headerTitle}>{t("driverAccess.title")}</Text>
         <TouchableOpacity style={styles.helpButton}>
           <Ionicons name="headset" size={16} color="black" />
-          <Text style={styles.helpText}>हेल्प</Text>
+          <Text style={styles.helpText}>{t("driverAccess.help")}</Text>
         </TouchableOpacity>
       </View>
 
@@ -22,8 +25,9 @@ export default function DriverAccessFeeScreen({ navigation }) {
       <View style={styles.content}>
         <View style={styles.blueBox}>
           <View style={styles.blueBoxTextCol}>
-            <Text style={styles.blueBoxTitle}>केवल तभी पेमेंट करें</Text>
-            <Text style={styles.blueBoxTitle}>जब आप राइड करते हैं।</Text>
+            <Text style={styles.blueBoxTitle}>
+              {t("driverAccess.payOnlyWhen")}
+            </Text>
           </View>
           <Ionicons
             name="car"
@@ -35,24 +39,24 @@ export default function DriverAccessFeeScreen({ navigation }) {
 
         {/* Pricing Card */}
         <View style={styles.pricingCard}>
-          <Text style={styles.planHeader}>Access Fee Plan</Text>
+          <Text style={styles.planHeader}>{t("driverAccess.planTitle")}</Text>
           <View style={styles.divider} />
 
           <View style={styles.planRow}>
             <Text style={styles.priceText}>
-              <Text style={styles.priceBold}>₹19/-</Text> प्रति दिन
+              <Text style={styles.priceBold}>₹19/-</Text> {t("driverAccess.perDay")}
             </Text>
             <Text style={styles.ridesText}>
-              <Text style={styles.ridesBold}>1-4</Text> राइड
+              {t("driverAccess.rides_1_4")}
             </Text>
           </View>
 
           <View style={styles.planRow}>
             <Text style={styles.priceText}>
-              <Text style={styles.priceBold}>₹0/-</Text> प्रति दिन
+              <Text style={styles.priceBold}>₹0/-</Text> {t("driverAccess.perDay")}
             </Text>
             <Text style={styles.ridesText}>
-              <Text style={styles.ridesBold}>5+</Text> राइड
+              {t("driverAccess.rides_5_plus")}
             </Text>
           </View>
         </View>

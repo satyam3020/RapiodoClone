@@ -9,8 +9,11 @@ import {
   Image,
 } from "react-native";
 import { Ionicons, MaterialIcons } from "@expo/vector-icons";
+import { useContext } from "react";
+import { AppContext } from "../../context/AppContext";
 
 export default function DriverServiceManagerScreen({ navigation }) {
+  const { t } = useContext(AppContext);
   return (
     <SafeAreaView style={styles.container}>
       {/* Header */}
@@ -18,10 +21,10 @@ export default function DriverServiceManagerScreen({ navigation }) {
         <TouchableOpacity onPress={() => navigation.goBack()}>
           <Ionicons name="arrow-back" size={28} color="black" />
         </TouchableOpacity>
-        <Text style={styles.headerTitle}>सर्विस मैनेजर</Text>
+        <Text style={styles.headerTitle}>{t("driverServiceManager.title")}</Text>
         <TouchableOpacity style={styles.helpButton}>
           <Ionicons name="headset" size={16} color="black" />
-          <Text style={styles.helpText}>हेल्प</Text>
+          <Text style={styles.helpText}>{t("driverServiceManager.help")}</Text>
         </TouchableOpacity>
       </View>
 
@@ -43,7 +46,7 @@ export default function DriverServiceManagerScreen({ navigation }) {
               color="#FFFFFF"
               style={{ marginRight: 4 }}
             />
-            <Text style={styles.activeTagText}>ऐक्टिव</Text>
+            <Text style={styles.activeTagText}>{t("driverServiceManager.active")}</Text>
           </View>
         </View>
 
@@ -60,7 +63,7 @@ export default function DriverServiceManagerScreen({ navigation }) {
               color="#FFFFFF"
               style={{ marginRight: 4 }}
             />
-            <Text style={styles.activeTagText}>ऐक्टिव</Text>
+            <Text style={styles.activeTagText}>{t("driverServiceManager.active")}</Text>
           </View>
         </View>
 
@@ -78,9 +81,9 @@ export default function DriverServiceManagerScreen({ navigation }) {
           <View style={styles.avatarCircle}>
             <MaterialIcons name="local-taxi" size={30} color="#1A73E8" />
           </View>
-          <Text style={styles.serviceName}>ऑटो बूस्ट</Text>
+          <Text style={styles.serviceName}>{t("driverServiceManager.autoBoost")}</Text>
           <TouchableOpacity style={styles.startButton}>
-            <Text style={styles.startButtonText}>शुरू करें</Text>
+            <Text style={styles.startButtonText}>{t("driverServiceManager.start")}</Text>
           </TouchableOpacity>
         </View>
       </ScrollView>
